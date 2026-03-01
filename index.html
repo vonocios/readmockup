@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LinguaLearn – Daily Life in New York</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #faf7f2;
+      --surface: #ffffff;
+      --ink: #1c1917;
+      --ink-light: #57534e;
+      --accent: #c2410c;
+      --accent-soft: #fff7ed;
+      --accent-border: #fdba74;
+      --green: #15803d;
+      --green-soft: #f0fdf4;
+      --tooltip-bg: #1c1917;
+      --tooltip-text: #fafaf9;
+      --radius: 10px;
+      --shadow: 0 4px 24px rgba(28,25,23,0.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--ink);
+      color: #fafaf9;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      letter-spacing: .02em;
+    }
+    .logo span { color: var(--accent-border); }
+    .header-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .75rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 3px 10px;
+      border-radius: 99px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 780px;
+      margin: 3rem auto 5rem;
+      padding: 0 1.5rem;
+    }
+
+    /* ── Info bar ── */
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .8rem;
+      color: var(--ink-light);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-border);
+      color: var(--accent);
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-weight: 600;
+      font-size: .75rem;
+    }
+    .dot { color: #d6d3d1; }
+
+    /* ── Article title ── */
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: .75rem;
+    }
+    .subtitle {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--ink-light);
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e7e5e4;
+    }
+
+    /* ── Tip box ── */
+    .tip-box {
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: .9rem 1.1rem;
+      margin-bottom: 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .88rem;
+      color: #166534;
+      display: flex;
+      gap: .6rem;
+      align-items: flex-start;
+    }
+    .tip-box .icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── Article body ── */
+    .article-body {
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: var(--ink);
+    }
+    .article-body p { margin-bottom: 1.4rem; }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin: 2.2rem 0 .8rem;
+      color: var(--ink);
+    }
+
+    /* ── Word spans ── */
+    .word {
+      position: relative;
+      cursor: default;
+      border-bottom: 1.5px dashed #c2bab5;
+      transition: border-color .15s, color .15s;
+    }
+    .word:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── Tooltip ── */
+    .word .tooltip {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--tooltip-bg);
+      color: var(--tooltip-text);
+      border-radius: 8px;
+      padding: 7px 12px;
+      min-width: 120px;
+      max-width: 200px;
+      z-index: 100;
+      pointer-events: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+      text-align: center;
+      white-space: nowrap;
+    }
+    .word:hover .tooltip { display: block; }
+
+    /* Arrow */
+    .word .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--tooltip-bg);
+    }
+
+    .tooltip-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .7rem;
+      color: #a8a29e;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .tooltip-translation {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      font-weight: 600;
+      color: #fef3c7;
+    }
+    .tooltip-phonetic {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .72rem;
+      color: #a8a29e;
+      margin-top: 2px;
+    }
+
+    /* ── Pronunciation button ── */
+    .btn-speak-bar {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-speak {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: .6rem 1.2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+    }
+    .btn-speak:hover { background: #292524; }
+    .btn-speak:active { transform: scale(.97); }
+    .btn-speak.playing { background: var(--accent); }
+
+    .btn-speak-slow {
+      background: transparent;
+      border: 1.5px solid #d6d3d1;
+      color: var(--ink-light);
+    }
+    .btn-speak-slow:hover { background: #f5f5f4; color: var(--ink); }
+
+    .speak-hint {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .78rem;
+      color: var(--ink-light);
+    }
+
+    /* ── Vocabulary box ── */
+    .vocab-box {
+      background: var(--surface);
+      border: 1px solid #e7e5e4;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 3rem;
+      box-shadow: var(--shadow);
+    }
+    .vocab-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: .6rem;
+    }
+    .vocab-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg);
+      border-radius: 7px;
+      padding: .5rem .75rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .85rem;
+    }
+    .vocab-item .en { font-weight: 600; }
+    .vocab-item .pt { color: var(--ink-light); }
+    .vocab-item .mini-speak {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0 0 0 .4rem;
+      opacity: .5;
+      transition: opacity .15s;
+    }
+    .vocab-item .mini-speak:hover { opacity: 1; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .78rem;
+      color: #a8a29e;
+      padding-bottom: 2rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      h1 { font-size: 1.6rem; }
+      .article-body { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Lingua<span>Learn</span></div>
+  <div class="header-tag">English Course</div>
+</header>
+
+<main>
+  <div class="meta">
+    <span class="badge">📘 Level A2 / B1</span>
+    <span class="dot">•</span>
+    <span>Reading &amp; Vocabulary</span>
+    <span class="dot">•</span>
+    <span>Unit 4 – Daily Life</span>
+  </div>
+
+  <h1>A Day in New York City</h1>
+  <p class="subtitle">Discover how people live, work, and enjoy the world's most famous city.</p>
+
+  <div class="tip-box">
+    <span class="icon">💡</span>
+    <span>
+      <strong>Interactive text:</strong> hover over any word to see the Portuguese translation.
+      Use the buttons below to hear the pronunciation of the full text.
+    </span>
+  </div>
+
+  <div class="btn-speak-bar">
+    <button class="btn-speak" id="btnPlay" onclick="speakText()">
+      <span>🔊</span> Listen to the text
+    </button>
+    <button class="btn-speak btn-speak-slow" id="btnSlow" onclick="speakText(true)">
+      <span>🐢</span> Slow speed
+    </button>
+    <span class="speak-hint">Works in Chrome, Edge & Safari</span>
+  </div>
+
+  <div class="article-body" id="articleBody">
+    <p>
+      New York City is one of the most exciting and busy cities in the world. Every morning, millions of people wake up early and start their daily routine. Some people take the subway to work, while others prefer to walk through the crowded streets. The city never sleeps, and there is always something interesting happening around every corner.
+    </p>
+    <h2>Morning Habits</h2>
+    <p>
+      Many New Yorkers begin their day with a strong cup of coffee from one of the thousands of cafés and coffee shops spread across the city. After breakfast, children put on their backpacks and go to school, while adults rush to their offices, shops, or hospitals. The streets become extremely busy between seven and nine in the morning, and the noise of cars and buses fills the air.
+    </p>
+    <h2>Lunch and Free Time</h2>
+    <p>
+      At lunchtime, workers often eat a quick meal at a nearby restaurant or buy food from street vendors. Central Park is a popular place to relax during lunch breaks. People sit on the grass, read books, listen to music, or watch the beautiful fountain. In the afternoon, students finish their classes and meet friends at the library or playground.
+    </p>
+    <h2>Evening in the City</h2>
+    <p>
+      When the sun goes down, the city transforms into a sea of colorful lights. Families gather for dinner at home or at their favorite restaurant. Theaters, museums, and music venues open their doors for the evening, offering entertainment for everyone. Young people enjoy going to concerts or outdoor movies in the park. By midnight, the streets are still full of life, because New York truly never sleeps.
+    </p>
+  </div>
+
+  <!-- Vocabulary reference box -->
+  <div class="vocab-box">
+    <h3>📖 Key Vocabulary</h3>
+    <div class="vocab-grid" id="vocabGrid"></div>
+  </div>
+</main>
+
+<footer>© 2025 LinguaLearn — All rights reserved</footer>
+
+<script>
+  // ─────────────────────────────────────────────
+  // 1. DICTIONARY  (English → Portuguese)
+  // ─────────────────────────────────────────────
+  const dict = {
+    new: { pt: "novo / Nova York", ph: "/njuː/" },
+    york: { pt: "York (cidade)", ph: "/jɔːrk/" },
+    city: { pt: "cidade", ph: "/ˈsɪti/" },
+    one: { pt: "um / uma", ph: "/wʌn/" },
+    of: { pt: "de", ph: "/əv/" },
+    the: { pt: "o / a", ph: "/ðə/" },
+    most: { pt: "mais / a maioria", ph: "/moʊst/" },
+    exciting: { pt: "empolgante", ph: "/ɪkˈsaɪtɪŋ/" },
+    and: { pt: "e", ph: "/ænd/" },
+    busy: { pt: "movimentado / ocupado", ph: "/ˈbɪzi/" },
+    cities: { pt: "cidades", ph: "/ˈsɪtiz/" },
+    in: { pt: "em / dentro de", ph: "/ɪn/" },
+    world: { pt: "mundo", ph: "/wɜːrld/" },
+    every: { pt: "cada / todo", ph: "/ˈɛvri/" },
+    morning: { pt: "manhã", ph: "/ˈmɔːrnɪŋ/" },
+    millions: { pt: "milhões", ph: "/ˈmɪljənz/" },
+    people: { pt: "pessoas", ph: "/ˈpiːpəl/" },
+    wake: { pt: "acordar", ph: "/weɪk/" },
+    up: { pt: "para cima / acordar", ph: "/ʌp/" },
+    early: { pt: "cedo", ph: "/ˈɜːrli/" },
+    start: { pt: "começar / início", ph: "/stɑːrt/" },
+    their: { pt: "seu / sua (deles)", ph: "/ðɛr/" },
+    daily: { pt: "diário / diariamente", ph: "/ˈdeɪli/" },
+    routine: { pt: "rotina", ph: "/ruːˈtiːn/" },
+    some: { pt: "alguns / algum", ph: "/sʌm/" },
+    take: { pt: "pegar / tomar", ph: "/teɪk/" },
+    subway: { pt: "metrô", ph: "/ˈsʌbweɪ/" },
+    to: { pt: "para / a", ph: "/tuː/" },
+    work: { pt: "trabalho / trabalhar", ph: "/wɜːrk/" },
+    while: { pt: "enquanto", ph: "/waɪl/" },
+    others: { pt: "outros", ph: "/ˈʌðərz/" },
+    prefer: { pt: "preferir", ph: "/prɪˈfɜːr/" },
+    walk: { pt: "caminhar / andar", ph: "/wɔːk/" },
+    through: { pt: "por / através de", ph: "/θruː/" },
+    crowded: { pt: "lotado / cheio de gente", ph: "/ˈkraʊdɪd/" },
+    streets: { pt: "ruas", ph: "/striːts/" },
+    never: { pt: "nunca / jamais", ph: "/ˈnɛvər/" },
+    sleeps: { pt: "dorme", ph: "/sliːps/" },
+    there: { pt: "lá / há", ph: "/ðɛr/" },
+    is: { pt: "é / está", ph: "/ɪz/" },
+    always: { pt: "sempre", ph: "/ˈɔːlweɪz/" },
+    something: { pt: "algo / alguma coisa", ph: "/ˈsʌmθɪŋ/" },
+    interesting: { pt: "interessante", ph: "/ˈɪntrəstɪŋ/" },
+    happening: { pt: "acontecendo", ph: "/ˈhæpənɪŋ/" },
+    around: { pt: "ao redor / por volta", ph: "/əˈraʊnd/" },
+    corner: { pt: "esquina / canto", ph: "/ˈkɔːrnər/" },
+    many: { pt: "muitos / muitas", ph: "/ˈmɛni/" },
+    new: { pt: "novo / nova", ph: "/njuː/" },
+    yorkers: { pt: "nova-iorquinos", ph: "/ˈjɔːrkərz/" },
+    begin: { pt: "começar", ph: "/bɪˈɡɪn/" },
+    day: { pt: "dia", ph: "/deɪ/" },
+    with: { pt: "com", ph: "/wɪð/" },
+    strong: { pt: "forte / intenso", ph: "/strɔːŋ/" },
+    cup: { pt: "xícara / copo", ph: "/kʌp/" },
+    coffee: { pt: "café", ph: "/ˈkɔːfi/" },
+    from: { pt: "de / vindo de", ph: "/frɒm/" },
+    thousands: { pt: "milhares", ph: "/ˈθaʊzəndz/" },
+    cafés: { pt: "cafés / cafeterias", ph: "/kæˈfeɪz/" },
+    spread: { pt: "espalhados / distribuídos", ph: "/sprɛd/" },
+    across: { pt: "ao longo de / pelo", ph: "/əˈkrɒs/" },
+    after: { pt: "depois de / após", ph: "/ˈæftər/" },
+    breakfast: { pt: "café da manhã", ph: "/ˈbrɛkfəst/" },
+    children: { pt: "crianças", ph: "/ˈtʃɪldrən/" },
+    put: { pt: "colocar / pôr", ph: "/pʊt/" },
+    on: { pt: "em cima / ligado", ph: "/ɒn/" },
+    backpacks: { pt: "mochilas", ph: "/ˈbækpæks/" },
+    go: { pt: "ir", ph: "/ɡoʊ/" },
+    school: { pt: "escola", ph: "/skuːl/" },
+    adults: { pt: "adultos", ph: "/ˈædʌlts/" },
+    rush: { pt: "correr / apressar-se", ph: "/rʌʃ/" },
+    offices: { pt: "escritórios", ph: "/ˈɒfɪsɪz/" },
+    shops: { pt: "lojas", ph: "/ʃɒps/" },
+    hospitals: { pt: "hospitais", ph: "/ˈhɒspɪtəlz/" },
+    become: { pt: "tornar-se / ficar", ph: "/bɪˈkʌm/" },
+    extremely: { pt: "extremamente", ph: "/ɪkˈstriːmli/" },
+    between: { pt: "entre", ph: "/bɪˈtwiːn/" },
+    seven: { pt: "sete", ph: "/ˈsɛvən/" },
+    nine: { pt: "nove", ph: "/naɪn/" },
+    noise: { pt: "barulho / ruído", ph: "/nɔɪz/" },
+    cars: { pt: "carros", ph: "/kɑːrz/" },
+    buses: { pt: "ônibus", ph: "/ˈbʌsɪz/" },
+    fills: { pt: "preenche / enche", ph: "/fɪlz/" },
+    air: { pt: "ar", ph: "/ɛr/" },
+    at: { pt: "em / às", ph: "/æt/" },
+    lunchtime: { pt: "hora do almoço", ph: "/ˈlʌntʃtaɪm/" },
+    workers: { pt: "trabalhadores", ph: "/ˈwɜːrkərz/" },
+    often: { pt: "frequentemente", ph: "/ˈɒfən/" },
+    eat: { pt: "comer", ph: "/iːt/" },
+    quick: { pt: "rápido / ligeiro", ph: "/kwɪk/" },
+    meal: { pt: "refeição", ph: "/miːl/" },
+    nearby: { pt: "próximo / vizinho", ph: "/ˈnɪərbaɪ/" },
+    restaurant: { pt: "restaurante", ph: "/ˈrɛstrənt/" },
+    buy: { pt: "comprar", ph: "/baɪ/" },
+    food: { pt: "comida / alimento", ph: "/fuːd/" },
+    street: { pt: "rua / de rua", ph: "/striːt/" },
+    vendors: { pt: "vendedores / feirantes", ph: "/ˈvɛndərz/" },
+    central: { pt: "central", ph: "/ˈsɛntrəl/" },
+    park: { pt: "parque", ph: "/pɑːrk/" },
+    popular: { pt: "popular / famoso", ph: "/ˈpɒpjʊlər/" },
+    place: { pt: "lugar / local", ph: "/pleɪs/" },
+    relax: { pt: "relaxar / descansar", ph: "/rɪˈlæks/" },
+    during: { pt: "durante", ph: "/ˈdjʊərɪŋ/" },
+    lunch: { pt: "almoço", ph: "/lʌntʃ/" },
+    breaks: { pt: "pausas / intervalos", ph: "/breɪks/" },
+    sit: { pt: "sentar(-se)", ph: "/sɪt/" },
+    grass: { pt: "grama / gramado", ph: "/ɡrɑːs/" },
+    read: { pt: "ler", ph: "/riːd/" },
+    books: { pt: "livros", ph: "/bʊks/" },
+    listen: { pt: "ouvir / escutar", ph: "/ˈlɪsən/" },
+    music: { pt: "música", ph: "/ˈmjuːzɪk/" },
+    watch: { pt: "assistir / observar", ph: "/wɒtʃ/" },
+    beautiful: { pt: "bonito / lindo", ph: "/ˈbjuːtɪfəl/" },
+    fountain: { pt: "fonte / chafariz", ph: "/ˈfaʊntɪn/" },
+    afternoon: { pt: "tarde / período da tarde", ph: "/ˌæftərˈnuːn/" },
+    students: { pt: "estudantes / alunos", ph: "/ˈstjuːdənts/" },
+    finish: { pt: "terminar / acabar", ph: "/ˈfɪnɪʃ/" },
+    classes: { pt: "aulas / turmas", ph: "/ˈklɑːsɪz/" },
+    meet: { pt: "encontrar / conhecer", ph: "/miːt/" },
+    friends: { pt: "amigos", ph: "/frɛndz/" },
+    library: { pt: "biblioteca", ph: "/ˈlaɪbrəri/" },
+    playground: { pt: "parquinho / pátio", ph: "/ˈpleɪɡraʊnd/" },
+    when: { pt: "quando", ph: "/wɛn/" },
+    sun: { pt: "sol", ph: "/sʌn/" },
+    goes: { pt: "vai / desce", ph: "/ɡoʊz/" },
+    down: { pt: "para baixo / cair", ph: "/daʊn/" },
+    transforms: { pt: "transforma-se", ph: "/trænsˈfɔːrmz/" },
+    into: { pt: "em / para dentro de", ph: "/ˈɪntə/" },
+    sea: { pt: "mar / mar de", ph: "/siː/" },
+    colorful: { pt: "colorido / vibrante", ph: "/ˈkʌlərfəl/" },
+    lights: { pt: "luzes", ph: "/laɪts/" },
+    families: { pt: "famílias", ph: "/ˈfæməliz/" },
+    gather: { pt: "reunir-se / juntar-se", ph: "/ˈɡæðər/" },
+    dinner: { pt: "jantar", ph: "/ˈdɪnər/" },
+    home: { pt: "casa / lar", ph: "/hoʊm/" },
+    favorite: { pt: "favorito / preferido", ph: "/ˈfeɪvərɪt/" },
+    theaters: { pt: "teatros / cinemas", ph: "/ˈθɪətərz/" },
+    museums: { pt: "museus", ph: "/mjuːˈziːəmz/" },
+    venues: { pt: "locais / casas de shows", ph: "/ˈvɛnjuːz/" },
+    open: { pt: "abrir / aberto", ph: "/ˈoʊpən/" },
+    doors: { pt: "portas", ph: "/dɔːrz/" },
+    evening: { pt: "noite / fim de tarde", ph: "/ˈiːvnɪŋ/" },
+    offering: { pt: "oferecendo", ph: "/ˈɒfərɪŋ/" },
+    entertainment: { pt: "entretenimento", ph: "/ˌɛntəˈteɪnmənt/" },
+    everyone: { pt: "todos / todo mundo", ph: "/ˈɛvrɪwʌn/" },
+    young: { pt: "jovem / novo", ph: "/jʌŋ/" },
+    enjoy: { pt: "gostar / aproveitar", ph: "/ɪnˈdʒɔɪ/" },
+    going: { pt: "indo / ir", ph: "/ˈɡoʊɪŋ/" },
+    concerts: { pt: "shows / concertos", ph: "/ˈkɒnsərts/" },
+    outdoor: { pt: "ao ar livre", ph: "/ˈaʊtdɔːr/" },
+    movies: { pt: "filmes", ph: "/ˈmuːviz/" },
+    by: { pt: "por / até", ph: "/baɪ/" },
+    midnight: { pt: "meia-noite", ph: "/ˈmɪdnaɪt/" },
+    still: { pt: "ainda / quieto", ph: "/stɪl/" },
+    full: { pt: "cheio / pleno", ph: "/fʊl/" },
+    life: { pt: "vida", ph: "/laɪf/" },
+    because: { pt: "porque / pois", ph: "/bɪˈkɒz/" },
+    truly: { pt: "verdadeiramente", ph: "/ˈtruːli/" },
+    sleep: { pt: "dormir / sono", ph: "/sliːp/" },
+    habits: { pt: "hábitos / costumes", ph: "/ˈhæbɪts/" },
+    free: { pt: "livre / gratuito", ph: "/friː/" },
+    time: { pt: "tempo / hora", ph: "/taɪm/" },
+    a: { pt: "um / uma (artigo)", ph: "/ə/" },
+    an: { pt: "um / uma (artigo)", ph: "/æn/" },
+    or: { pt: "ou", ph: "/ɔːr/" },
+    are: { pt: "são / estão", ph: "/ɑːr/" },
+    be: { pt: "ser / estar", ph: "/biː/" },
+    for: { pt: "para / por", ph: "/fɔːr/" },
+    its: { pt: "seu / sua (dele/dela)", ph: "/ɪts/" },
+    it: { pt: "isso / ele/ela (coisa)", ph: "/ɪt/" },
+    but: { pt: "mas / porém", ph: "/bʌt/" },
+    not: { pt: "não", ph: "/nɒt/" },
+    have: { pt: "ter / possuir", ph: "/hæv/" },
+    has: { pt: "tem / possui", ph: "/hæz/" },
+    this: { pt: "este / esta / isso", ph: "/ðɪs/" },
+    that: { pt: "aquele / aquela / que", ph: "/ðæt/" },
+    they: { pt: "eles / elas", ph: "/ðeɪ/" },
+    them: { pt: "eles / elas (objeto)", ph: "/ðɛm/" },
+    we: { pt: "nós", ph: "/wiː/" },
+    you: { pt: "você / vocês", ph: "/juː/" },
+    he: { pt: "ele", ph: "/hiː/" },
+    she: { pt: "ela", ph: "/ʃiː/" },
+    how: { pt: "como / quanto", ph: "/haʊ/" },
+    what: { pt: "o que / qual", ph: "/wɒt/" },
+    who: { pt: "quem", ph: "/huː/" },
+    where: { pt: "onde / aonde", ph: "/wɛr/" },
+    why: { pt: "por que", ph: "/waɪ/" },
+    also: { pt: "também / igualmente", ph: "/ˈɔːlsoʊ/" },
+    very: { pt: "muito / bem", ph: "/ˈvɛri/" },
+    more: { pt: "mais", ph: "/mɔːr/" },
+    other: { pt: "outro / outra", ph: "/ˈʌðər/" },
+    can: { pt: "poder / conseguir", ph: "/kæn/" },
+    his: { pt: "dele / seu (masculino)", ph: "/hɪz/" },
+    her: { pt: "dela / a ela", ph: "/hɜːr/" },
+    if: { pt: "se / caso", ph: "/ɪf/" },
+    about: { pt: "sobre / acerca de", ph: "/əˈbaʊt/" },
+    as: { pt: "como / enquanto / tão", ph: "/æz/" },
+    so: { pt: "então / tão / assim", ph: "/soʊ/" },
+    then: { pt: "então / depois", ph: "/ðɛn/" },
+    all: { pt: "todos / tudo", ph: "/ɔːl/" },
+    no: { pt: "não / nenhum", ph: "/noʊ/" },
+    my: { pt: "meu / minha", ph: "/maɪ/" },
+    your: { pt: "seu / sua (de você)", ph: "/jɔːr/" },
+    our: { pt: "nosso / nossa", ph: "/aʊər/" },
+    here: { pt: "aqui", ph: "/hɪər/" },
+    well: { pt: "bem / poço", ph: "/wɛl/" },
+    just: { pt: "apenas / só / justo", ph: "/dʒʌst/" },
+    out: { pt: "fora / para fora", ph: "/aʊt/" },
+    now: { pt: "agora / já", ph: "/naʊ/" },
+    get: { pt: "pegar / obter / ficar", ph: "/ɡɛt/" },
+    like: { pt: "como / gostar de", ph: "/laɪk/" },
+    know: { pt: "saber / conhecer", ph: "/noʊ/" },
+    think: { pt: "pensar / achar", ph: "/θɪŋk/" },
+    see: { pt: "ver / enxergar", ph: "/siː/" },
+    come: { pt: "vir / chegar", ph: "/kʌm/" },
+    way: { pt: "caminho / jeito", ph: "/weɪ/" },
+    make: { pt: "fazer / criar", ph: "/meɪk/" },
+    look: { pt: "olhar / parecer", ph: "/lʊk/" },
+    good: { pt: "bom / boa / bem", ph: "/ɡʊd/" },
+    those: { pt: "aqueles / aquelas", ph: "/ðoʊz/" },
+    these: { pt: "estes / estas", ph: "/ðiːz/" },
+    any: { pt: "algum / qualquer", ph: "/ˈɛni/" },
+    first: { pt: "primeiro / primeira", ph: "/fɜːrst/" },
+    last: { pt: "último / passado / durar", ph: "/lɑːst/" },
+    long: { pt: "longo / muito tempo", ph: "/lɒŋ/" },
+    great: { pt: "ótimo / grande", ph: "/ɡreɪt/" },
+    little: { pt: "pequeno / pouco", ph: "/ˈlɪtəl/" },
+    big: { pt: "grande / enorme", ph: "/bɪɡ/" },
+    old: { pt: "velho / antigo", ph: "/oʊld/" },
+    high: { pt: "alto / elevado", ph: "/haɪ/" },
+    right: { pt: "certo / direita / direito", ph: "/raɪt/" },
+    next: { pt: "próximo / seguinte", ph: "/nɛkst/" },
+    say: { pt: "dizer / falar", ph: "/seɪ/" },
+    year: { pt: "ano", ph: "/jɪər/" },
+    two: { pt: "dois / duas", ph: "/tuː/" },
+    three: { pt: "três", ph: "/θriː/" },
+    own: { pt: "próprio / possuir", ph: "/oʊn/" },
+    used: { pt: "usado / costumava", ph: "/juːzd/" },
+    each: { pt: "cada", ph: "/iːtʃ/" },
+    same: { pt: "mesmo / igual", ph: "/seɪm/" },
+    different: { pt: "diferente", ph: "/ˈdɪfrənt/" },
+    both: { pt: "ambos / os dois", ph: "/boʊθ/" },
+    back: { pt: "costas / voltar / de volta", ph: "/bæk/" },
+    too: { pt: "também / demais", ph: "/tuː/" },
+    again: { pt: "novamente / de novo", ph: "/əˈɡɛn/" },
+    new: { pt: "novo / nova", ph: "/njuː/" },
+    give: { pt: "dar / oferecer", ph: "/ɡɪv/" },
+    most: { pt: "a maioria / mais", ph: "/moʊst/" },
+    tell: { pt: "dizer / contar", ph: "/tɛl/" },
+    even: { pt: "até mesmo / plano / igual", ph: "/ˈiːvən/" },
+    found: { pt: "encontrou / fundou", ph: "/faʊnd/" },
+    help: { pt: "ajuda / ajudar", ph: "/hɛlp/" },
+    hand: { pt: "mão", ph: "/hænd/" },
+    part: { pt: "parte / participar", ph: "/pɑːrt/" },
+    place: { pt: "lugar / colocar", ph: "/pleɪs/" },
+    feel: { pt: "sentir / sensação", ph: "/fiːl/" },
+    keep: { pt: "manter / guardar", ph: "/kiːp/" },
+    become: { pt: "tornar-se", ph: "/bɪˈkʌm/" },
+    show: { pt: "mostrar / show / exibição", ph: "/ʃoʊ/" },
+    need: { pt: "precisar / necessidade", ph: "/niːd/" },
+    want: { pt: "querer / desejo", ph: "/wɒnt/" },
+    things: { pt: "coisas", ph: "/θɪŋz/" },
+    thing: { pt: "coisa", ph: "/θɪŋ/" },
+    much: { pt: "muito (incontável)", ph: "/mʌtʃ/" },
+    number: { pt: "número / numerar", ph: "/ˈnʌmbər/" },
+    off: { pt: "desligado / fora", ph: "/ɒf/" },
+    never: { pt: "nunca", ph: "/ˈnɛvər/" },
+    before: { pt: "antes", ph: "/bɪˈfɔːr/" },
+    actually: { pt: "na verdade / realmente", ph: "/ˈæktʃuəli/" },
+  };
+
+  // Key vocabulary to show in the reference box
+  const keyVocab = [
+    { en: "routine", pt: "rotina" },
+    { en: "subway", pt: "metrô" },
+    { en: "crowded", pt: "lotado" },
+    { en: "breakfast", pt: "café da manhã" },
+    { en: "backpacks", pt: "mochilas" },
+    { en: "lunchtime", pt: "hora do almoço" },
+    { en: "vendors", pt: "vendedores" },
+    { en: "fountain", pt: "chafariz / fonte" },
+    { en: "playground", pt: "parquinho" },
+    { en: "theaters", pt: "teatros" },
+    { en: "entertainment", pt: "entretenimento" },
+    { en: "midnight", pt: "meia-noite" },
+  ];
+
+  // ─────────────────────────────────────────────
+  // 2. WRAP WORDS IN SPANS
+  // ─────────────────────────────────────────────
+  function clean(word) {
+    return word.replace(/[^a-záéíóúãẽõâêôàüç'-]/gi, "").toLowerCase();
+  }
+
+  function wrapWords(el) {
+    if (el.nodeType === Node.TEXT_NODE) {
+      const tokens = el.textContent.split(/(\s+)/);
+      const frag = document.createDocumentFragment();
+      tokens.forEach(token => {
+        if (/^\s+$/.test(token) || token === "") {
+          frag.appendChild(document.createTextNode(token));
+          return;
+        }
+        const key = clean(token);
+        const entry = dict[key];
+        if (entry) {
+          const span = document.createElement("span");
+          span.className = "word";
+          span.innerHTML = `${token}<span class="tooltip"><div class="tooltip-label">🇧🇷 Tradução</div><div class="tooltip-translation">${entry.pt}</div><div class="tooltip-phonetic">${entry.ph}</div></span>`;
+          frag.appendChild(span);
+        } else {
+          // Word not in dict — still hoverable, show phonetic only
+          const span = document.createElement("span");
+          span.className = "word";
+          span.innerHTML = `${token}<span class="tooltip"><div class="tooltip-label">🔤 Palavra</div><div class="tooltip-translation">${token.replace(/[^a-zA-Z]/g,'')}</div><div class="tooltip-phonetic">sem tradução</div></span>`;
+          frag.appendChild(span);
+        }
+      });
+      el.parentNode.replaceChild(frag, el);
+    } else if (
+      el.nodeType === Node.ELEMENT_NODE &&
+      el.tagName !== "SCRIPT" &&
+      el.tagName !== "STYLE" &&
+      !el.classList.contains("tooltip")
+    ) {
+      Array.from(el.childNodes).forEach(wrapWords);
+    }
+  }
+
+  // ─────────────────────────────────────────────
+  // 3. WEB SPEECH API
+  // ─────────────────────────────────────────────
+  let utterance = null;
+
+  function getPlainText() {
+    const el = document.getElementById("articleBody");
+    return el.innerText.replace(/\s+/g, " ").trim();
+  }
+
+  function speakText(slow = false) {
+    if (!window.speechSynthesis) {
+      alert("Seu navegador não suporta a síntese de voz. Tente o Chrome ou Edge.");
+      return;
+    }
+
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+      document.getElementById("btnPlay").classList.remove("playing");
+      document.getElementById("btnPlay").innerHTML = "<span>🔊</span> Listen to the text";
+      document.getElementById("btnSlow").classList.remove("playing");
+      return;
+    }
+
+    utterance = new SpeechSynthesisUtterance(getPlainText());
+    utterance.lang = "en-US";
+    utterance.rate = slow ? 0.65 : 1.0;
+    utterance.pitch = 1;
+
+    const btn = slow ? document.getElementById("btnSlow") : document.getElementById("btnPlay");
+    btn.classList.add("playing");
+    btn.innerHTML = btn === document.getElementById("btnPlay")
+      ? "<span>⏹</span> Stop"
+      : "<span>⏹</span> Stop";
+
+    utterance.onend = () => {
+      btn.classList.remove("playing");
+      btn.innerHTML = btn === document.getElementById("btnPlay")
+        ? "<span>🔊</span> Listen to the text"
+        : "<span>🐢</span> Slow speed";
+    };
+
+    speechSynthesis.speak(utterance);
+  }
+
+  function speakWord(word) {
+    if (!window.speechSynthesis) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(word);
+    u.lang = "en-US";
+    u.rate = 0.85;
+    speechSynthesis.speak(u);
+  }
+
+  // ─────────────────────────────────────────────
+  // 4. BUILD VOCAB BOX
+  // ─────────────────────────────────────────────
+  function buildVocab() {
+    const grid = document.getElementById("vocabGrid");
+    keyVocab.forEach(v => {
+      const div = document.createElement("div");
+      div.className = "vocab-item";
+      div.innerHTML = `
+        <span class="en">${v.en}</span>
+        <span class="pt">${v.pt}</span>
+        <button class="mini-speak" title="Ouvir" onclick="speakWord('${v.en}')">🔊</button>
+      `;
+      grid.appendChild(div);
+    });
+  }
+
+  // ─────────────────────────────────────────────
+  // 5. INIT
+  // ─────────────────────────────────────────────
+  document.addEventListener("DOMContentLoaded", () => {
+    wrapWords(document.getElementById("articleBody"));
+    buildVocab();
+  });
+</script>
+</body>
+</html>
