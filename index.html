@@ -724,7 +724,7 @@
 
     utterance = new SpeechSynthesisUtterance(getPlainText());
     utterance.lang = "en-US";
-    utterance.rate = slow ? 0.65 : 1.0;
+    utterance.rate = slow ? 0.70 : 1.0;
     utterance.pitch = 1;
 
     const btn = slow ? document.getElementById("btnSlow") : document.getElementById("btnPlay");
@@ -748,7 +748,7 @@
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(word);
     u.lang = "en-US";
-    u.rate = 0.85;
+    u.rate = 0.80;
     speechSynthesis.speak(u);
   }
 
@@ -779,3 +779,4 @@
 </script>
 </body>
 </html>
+
