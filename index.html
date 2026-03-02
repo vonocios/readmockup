@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola de Idiomas - Aprenda Inglês e Espanhol Online</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/551299776-5453?text=Olá!%20Quero%20elevar%20meu%20nível%20em%20english%20and%20español!" class="whatsapp-float" target="_blank" aria-label="Contato WhatsApp">
+        <svg viewBox="0 0 32 32" fill="currentColor">
+            <path d="M16 0C7.164 0 0 7.163 0 16c0 2.816.736 5.464 2.025 7.76L0 32l8.448-2.016A15.923 15.923 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333c-2.547 0-4.96-.707-7.04-1.92l-.507-.293-5.227 1.253 1.28-4.96-.32-.533A13.28 13.28 0 012.667 16c0-7.36 5.973-13.333 13.333-13.333S29.333 8.64 29.333 16 23.36 29.333 16 29.333zm7.307-9.653c-.4-.2-2.373-1.173-2.747-1.307-.373-.133-.64-.2-.907.2-.267.4-1.04 1.307-1.28 1.573-.24.267-.48.293-.88.093-.4-.2-1.693-.627-3.227-2-.12-.107-2.293-2.587-2.533-2.987-.24-.4-.027-.613.173-.813.187-.187.4-.48.6-.72.2-.24.267-.4.4-.667.133-.267.067-.493-.033-.693-.1-.2-.907-2.187-1.24-2.987-.32-.773-.653-.667-.907-.68-.24-.013-.507-.013-.773-.013-.267 0-.693.1-1.067.493-.373.4-1.427 1.4-1.427 3.413s1.467 3.96 1.667 4.227c.2.267 2.827 4.32 6.853 6.053.96.413 1.707.667 2.293.853.96.307 1.84.267 2.533.16.773-.12 2.373-.973 2.707-1.907.333-.933.333-1.733.24-1.907-.093-.173-.36-.28-.76-.48z"/>
+        </svg>
+        <span class="whatsapp-pulse"></span>
+    </a>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🌍</span>
+                <span class="logo-text">Escola<strong>Idiomas</strong></span>
+            </div>
+            <div class="nav-links">
+                <a href="#cursos">Cursos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
+                <a href="#" class="btn-login" id="loginBtn">Área do Aluno</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">Aprenda</span>
+                    <span class="title-line title-highlight">Inglês e Espanhol</span>
+                    <span class="title-line">Online</span>
+                </h1>
+                <p class="hero-subtitle">Cursos online de inglês e espanhol com professores especializados. Aprenda no seu ritmo, com suporte dedicado e materiais exclusivos.</p>
+                <div class="hero-cta">
+                    <button class="btn-primary btn-large" id="matriculaBtn">
+                        <span>Começar Agora</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10h12m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="btn-secondary btn-large" id="alunoBtn">Já sou aluno</button>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-number">5K+</div>
+                    <div class="stat-label">Alunos Ativos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Idiomas Disponíveis</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4.9★</div>
+                    <div class="stat-label">Avaliação Média</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cursos Section -->
+    <section class="cursos-section" id="cursos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nossos Cursos</h2>
+                <p class="section-subtitle">Escolha o idioma que deseja aprender</p>
+            </div>
+            
+            <div class="cursos-grid cursos-grid-2">
+                <!-- Curso Inglês -->
+                <div class="curso-card curso-card-featured">
+                    <div class="curso-badge">Popular</div>
+                    <div class="curso-icon">🇺🇸</div>
+                    <h3 class="curso-title">INGLÊS / ENGLISH</h3>
+                    <p class="curso-description">Aprenda inglês do zero ao avançado com professores nativos e metodologia comprovada. Aulas interativas, conversação e material exclusivo.</p>
+                    <div class="curso-info">
+                        <span class="curso-duration">⏱ Acesso Vitalício</span>
+                        <span class="curso-level">📊 Todos os Níveis</span>
+                    </div>
+                    <div class="curso-price">
+                        <span class="price-old">R$ 1.497</span>
+                        <span class="price-current">R$ 897</span>
+                    </div>
+                    <button class="btn-curso" data-idioma="ingles">Matricule-se Agora</button>
+                </div>
+
+                <!-- Curso Espanhol -->
+                <div class="curso-card curso-card-featured">
+                    <div class="curso-icon">🇪🇸</div>
+                    <h3 class="curso-title">ESPANHOL / ESPAÑOL</h3>
+                    <p class="curso-description">Domine o espanhol com aulas dinâmicas e conteúdo prático. Professores especializados, conversação e materiais didáticos personalizados.</p>
+                    <div class="curso-info">
+                        <span class="curso-duration">⏱ Acesso Vitalício</span>
+                        <span class="curso-level">📊 Todos os Níveis</span>
+                    </div>
+                    <div class="curso-price">
+                        <span class="price-old">R$ 1.497</span>
+                        <span class="price-current">R$ 897</span>
+                    </div>
+                    <button class="btn-curso" data-idioma="espanhol">Matricule-se Agora</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section class="sobre-section" id="sobre">
+        <div class="container">
+            <div class="sobre-content">
+                <div class="sobre-text">
+                    <h2 class="section-title">Por que escolher nossa escola?</h2>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-content">
+                                <h3>Suporte Dedicado</h3>
+                                <p>Nossa equipe está sempre disponível para ajudar você em sua jornada de aprendizado.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-content">
+                                <h3>Materiais Exclusivos</h3>
+                                <p>Conteúdo protegido e personalizado com marca d'água individual para cada aluno.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-content">
+                                <h3>Aprenda no Seu Ritmo</h3>
+                                <p>Acesso vitalício aos cursos. Estude quando e onde quiser, sem pressão.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-content">
+                                <h3>Certificado Reconhecido</h3>
+                                <p>Receba certificado digital ao concluir cada curso para valorizar seu currículo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sobre-visual">
+                    <div class="visual-card card-1">
+                        <div class="visual-icon">🎓</div>
+                        <div class="visual-text">Ensino de Qualidade</div>
+                    </div>
+                    <div class="visual-card card-2">
+                        <div class="visual-icon">🚀</div>
+                        <div class="visual-text">Resultados Reais</div>
+                    </div>
+                    <div class="visual-card card-3">
+                        <div class="visual-icon">💡</div>
+                        <div class="visual-text">Inovação Constante</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section class="contato-section" id="contato">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Entre em Contato</h2>
+                <p class="section-subtitle">Estamos aqui para ajudar você a alcançar seus objetivos</p>
+            </div>
+            
+            <div class="contato-content">
+                <div class="contato-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h3>WhatsApp</h3>
+                            <p>(12) 99776-5453</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <path d="M22 6l-10 7L2 6"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h3>Email</h3>
+                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="37545859435643587756545653525a5e56535e505e43565b1954585a195545">contato@pinheirodavid.com.br</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <div class="info-text">
+                            <h3>Horário de Atendimento</h3>
+                            <p>Seg-Sex: 9h às 18h</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contato-form" id="contatoForm">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary btn-large">
+                        <span>Enviar Mensagem</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M18 2L9 11m9-9l-6 16-3-7-7-3 16-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="logo">
+                        <span class="logo-icon">🌍</span>
+                        <span class="logo-text">Escola<strong>Idiomas</strong></span>
+                    </div>
+                    <p class="footer-text">Transformando vidas através do ensino de idiomas online de qualidade.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Cursos</h4>
+                    <ul>
+                        <li><a href="#cursos">Inglês</a></li>
+                        <li><a href="#cursos">Espanhol</a></li>
+                        <li><a href="#sobre">Metodologia</a></li>
+                        <li><a href="#contato">Matrículas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Institucional</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Escola de Idiomas. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div class="modal" id="loginModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2 class="modal-title">Área do Aluno</h2>
+            <p class="modal-subtitle">Acesse sua conta para continuar aprendendo</p>
+            
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="email" required placeholder="seu@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginSenha">Senha</label>
+                    <input type="password" id="loginSenha" name="senha" required placeholder="••••••••">
+                </div>
+                
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="lembrar">
+                        <span>Lembrar de mim</span>
+                    </label>
+                    <a href="#" class="link-forgot">Esqueceu a senha?</a>
+                </div>
+                
+                <button type="submit" class="btn-primary btn-large btn-full">
+                    <span>Entrar</span>
+                </button>
+                
+                <div class="divider">
+                    <span>ou</span>
+                </div>
+                
+                <button type="button" class="btn-secondary btn-large btn-full" id="cadastroBtn">
+                    Criar uma 

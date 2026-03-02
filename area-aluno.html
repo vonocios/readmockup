@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área do Aluno - Escola de Idiomas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="area-aluno.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+</head>
+<body class="area-aluno-body">
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5561999999999?text=Olá!%20Sou%20aluno%20e%20preciso%20de%20ajuda" class="whatsapp-float" target="_blank" aria-label="Contato WhatsApp">
+        <svg viewBox="0 0 32 32" fill="currentColor">
+            <path d="M16 0C7.164 0 0 7.163 0 16c0 2.816.736 5.464 2.025 7.76L0 32l8.448-2.016A15.923 15.923 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333c-2.547 0-4.96-.707-7.04-1.92l-.507-.293-5.227 1.253 1.28-4.96-.32-.533A13.28 13.28 0 012.667 16c0-7.36 5.973-13.333 13.333-13.333S29.333 8.64 29.333 16 23.36 29.333 16 29.333zm7.307-9.653c-.4-.2-2.373-1.173-2.747-1.307-.373-.133-.64-.2-.907.2-.267.4-1.04 1.307-1.28 1.573-.24.267-.48.293-.88.093-.4-.2-1.693-.627-3.227-2-.12-.107-2.293-2.587-2.533-2.987-.24-.4-.027-.613.173-.813.187-.187.4-.48.6-.72.2-.24.267-.4.4-.667.133-.267.067-.493-.033-.693-.1-.2-.907-2.187-1.24-2.987-.32-.773-.653-.667-.907-.68-.24-.013-.507-.013-.773-.013-.267 0-.693.1-1.067.493-.373.4-1.427 1.4-1.427 3.413s1.467 3.96 1.667 4.227c.2.267 2.827 4.32 6.853 6.053.96.413 1.707.667 2.293.853.96.307 1.84.267 2.533.16.773-.12 2.373-.973 2.707-1.907.333-.933.333-1.733.24-1.907-.093-.173-.36-.28-.76-.48z"/>
+        </svg>
+        <span class="whatsapp-pulse"></span>
+    </a>
+
+    <!-- Header -->
+    <header class="header header-dashboard">
+        <nav class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🌍</span>
+                <span class="logo-text">Escola<strong>Idiomas</strong></span>
+            </div>
+            <div class="nav-user">
+                <span class="user-name">Olá, <strong id="userName">João Silva</strong></span>
+                <button class="btn-logout" id="logoutBtn">Sair</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Dashboard -->
+    <main class="dashboard">
+        <div class="container-dashboard">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h3>Meu Curso</h3>
+                    <span class="curso-badge-sidebar" id="cursoAtual">INGLÊS</span>
+                </div>
+                
+                <nav class="sidebar-nav">
+                    <a href="#materiais" class="sidebar-link active" data-tab="materiais">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                        <span>Materiais</span>
+                    </a>
+                    
+                    <a href="#agenda" class="sidebar-link" data-tab="agenda">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <span>Agenda</span>
+                    </a>
+                    
+                    <a href="#progresso" class="sidebar-link" data-tab="progresso">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                        <span>Progresso</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Conteúdo Principal -->
+            <section class="main-content">
+                <!-- Tab: Materiais -->
+                <div class="content-tab active" id="tab-materiais">
+                    <div class="content-header">
+                        <h1>Meus Materiais</h1>
+                        <p class="content-subtitle">Todos os materiais do seu curso de <span id="cursoNome">Inglês</span></p>
+                    </div>
+
+                    <div class="materiais-grid">
+                        <!-- Material 1 -->
+                        <div class="material-card">
+                            <div class="material-icon">📄</div>
+                            <div class="material-info">
+                                <h3>Módulo 1 - Fundamentos</h3>
+                                <p>Apostila completa com exercícios</p>
+                                <span class="material-size">2.5 MB • PDF</span>
+                            </div>
+                            <button class="btn-download">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download
+                            </button>
+                        </div>
+
+                        <!-- Material 2 -->
+                        <div class="material-card">
+                            <div class="material-icon">📄</div>
+                            <div class="material-info">
+                                <h3>Módulo 2 - Gramática Básica</h3>
+                                <p>Material de apoio e exercícios</p>
+                                <span class="material-size">3.1 MB • PDF</span>
+                            </div>
+                            <button class="btn-download">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download
+                            </button>
+                        </div>
+
+                        <!-- Material 3 -->
+                        <div class="material-card">
+                            <div class="material-icon">🎧</div>
+                            <div class="material-info">
+                                <h3>Áudios - Conversação</h3>
+                                <p>Exercícios de listening e pronúncia</p>
+                                <span class="material-size">15.2 MB • ZIP</span>
+                            </div>
+                            <button class="btn-download">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download
+                            </button>
+                        </div>
+
+                        <!-- Material 4 -->
+                        <div class="material-card">
+                            <div class="material-icon">📝</div>
+                            <div class="material-info">
+                                <h3>Lista de Vocabulário</h3>
+                                <p>1000 palavras mais usadas</p>
+                                <span class="material-size">1.8 MB • PDF</span>
+                            </div>
+                            <button class="btn-download">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        <div>
+                            <strong>Marca d'água personalizada:</strong> Todos os materiais contêm seu nome para garantir a segurança e exclusividade do conteúdo.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Agenda -->
+                <div class="content-tab" id="tab-agenda">
+                    <div class="content-header">
+                        <h1>Calendário Escolar</h1>
+                        <p class="content-subtitle">Acompanhe suas aulas e eventos do curso de <span id="cursoNomeAgenda">Inglês</span></p>
+                    </div>
+
+                    <div class="calendario-container">
+                        <div class="calendario-header">
+                            <button class="btn-mes" id="mesAnterior">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            <h2 id="mesAtual">Janeiro 2026</h2>
+                            <button class="btn-mes" id="mesSeguinte">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="calendario-grid">
+                            <div class="dia-semana">Dom</div>
+                            <div class="dia-semana">Seg</div>
+                            <div class="dia-semana">Ter</div>
+                            <div class="dia-semana">Qua</div>
+                            <div class="dia-semana">Qui</div>
+                            <div class="dia-semana">Sex</div>
+                            <div class="dia-semana">Sáb</div>
+                            
+                            <!-- Dias do mês (placeholder) -->
+                            <div class="dia"></div>
+                            <div class="dia"></div>
+                            <div class="dia"></div>
+                            <div class="dia">1</div>
+                            <div class="dia">2</div>
+                            <div class="dia">3</div>
+                            <div class="dia">4</div>
+                            <div class="dia">5</div>
+                            <div class="dia">6</div>
+                            <div class="dia aula">7<span class="badge-aula">Aula</span></div>
+                            <div class="dia">8</div>
+                            <div class="dia">9</div>
+                            <div class="dia">10</div>
+                            <div class="dia">11</div>
+                            <div class="dia">12</div>
+                            <div class="dia">13</div>
+                            <div class="dia aula">14<span class="badge-aula">Aula</span></div>
+                            <div class="dia">15</div>
+                            <div class="dia">16</div>
+                            <div class="dia">17</div>
+                            <div class="dia">18</div>
+                            <div class="dia">19</div>
+                            <div class="dia">20</div>
+                            <div class="dia aula prova">21<span class="badge-prova">Prova</span></div>
+                            <div class="dia">22</div>
+                            <div class="dia">23</div>
+                            <div class="dia">24</div>
+                            <div class="dia">25</div>
+                            <div class="dia">26</div>
+                            <div class="dia">27</div>
+                            <div class="dia aula hoje">28<span class="badge-hoje">Hoje</span></div>
+                            <div class="dia">29</div>
+                            <div class="dia">30</div>
+                            <div class="dia">31</div>
+                        </div>
+                    </div>
+
+                    <div class="proximas-aulas">
+                        <h3>Próximas Aulas</h3>
+                        <div class="aula-item">
+                            <div class="aula-data">
+                                <div class="aula-dia">28</div>
+                                <div class="aula-mes">JAN</div>
+                            </div>
+                            <div class="aula-detalhes">
+                                <h4>Aula ao Vivo - Conversação</h4>
+                                <p>📹 Online • 19:00 - 20:30</p>
+                            </div>
+                            <button class="btn-acessar">Acessar</button>
+                        </div>
+
+                        <div class="aula-item">
+                            <div class="aula-data">
+                                <div class="aula-dia">04</div>
+                                <div class="aula-mes">FEV</div>
+                            </div>
+                            <div class="aula-detalhes">
+                                <h4>Módulo 3 - Tempos Verbais</h4>
+                                <p>📚 Gravada • Disponível 00:00</p>
+                            </div>
+                            <button class="btn-acessar btn-disabled">Em breve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Progresso -->
+                <div class="content-tab" id="tab-progresso">
+                    <div class="content-header">
+                        <h1>Meu Progresso</h1>
+                        <p class="content-subtitle">Acompanhe sua evolução no curso</p>
+                    </div>
+
+                    <div class="progresso-cards">
+                        <div class="progress-card">
+                            <div class="progress-icon">📊</div>
+                            <div class="progress-info">
+                                <h3>Conclusão do Curso</h3>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%"></div>
+                                </div>
+                                <p>45% completo</p>
+                            </div>
+                        </div>
+
+                        <div class="progress-card">
+                            <div class="progress-icon">⏱️</div>
+                            <div class="progress-info">
+                                <h3>Tempo de Estudo</h3>
+                                <p class="progress-stat">28h 45min</p>
+                            </div>
+                        </div>
+
+                        <div class="progress-card">
+                            <div class="progress-icon">✅</div>
+                            <div class="progress-info">
+                                <h3>Aulas Concluídas</h3>
+                                <p class="progress-stat">12 de 26</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="area-aluno.js"></script>
+</body>
+</html>
