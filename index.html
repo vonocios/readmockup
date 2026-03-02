@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 02 · Lesson 08 — Are you into K-pop? | USpeaK</title>
+    <!-- WP: substituir pelos enqueue do tema -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="aula.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="aula-body">
+
+<!-- Header -->
+<header class="header header-aula">
+    <nav class="nav-container">
+        <a href="area-aluno.html" class="logo" style="text-decoration:none">
+            Mr. <strong>Dave</strong> Idiomas
+        </a>
+        <div class="aula-breadcrumb">
+            <a href="area-aluno.html">Área do Aluno</a>
+            <span>/</span>
+            <a href="#">USpeaK</a>
+            <span>/</span>
+            <span>Module 02 · Lesson 08</span>
+        </div>
+        <div class="aula-nav-actions">
+            <button class="btn-nav-aula" id="btnPrevLesson" title="Lição anterior">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <span class="aula-nav-label">Lição 08 / 12</span>
+            <button class="btn-nav-aula" id="btnNextLesson" title="Próxima lição">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<!-- TTS Controls Panel (fixed top, below header) -->
+<div class="tts-controls-bar" id="ttsControlsBar">
+    <div class="tts-controls-inner">
+        <button class="tts-toggle-panel" id="ttsTogglePanel" title="Configurações de voz">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
+            Configurações
+        </button>
+        <div class="tts-panel" id="ttsPanel">
+            <div class="tts-control-group">
+                <label>Idioma</label>
+                <select id="ttsLang">
+                    <option value="en-US">🇺🇸 EN / US</option>
+                    <option value="en-GB">🇬🇧 EN / UK</option>
+                </select>
+            </div>
+            <div class="tts-control-group">
+                <label>Velocidade <span id="rateVal">1.0</span>x</label>
+                <input type="range" id="ttsRate" min="0.5" max="2" step="0.1" value="1">
+            </div>
+            <div class="tts-control-group">
+                <label>Tom <span id="pitchVal">1.0</span></label>
+                <input type="range" id="ttsPitch" min="0.5" max="2" step="0.1" value="1">
+            </div>
+            <div class="tts-control-group">
+                <label>Delay <span id="delayVal">0</span>ms</label>
+                <input type="range" id="ttsDelay" min="0" max="1000" step="50" value="0">
+            </div>
+        </div>
+        <div class="tts-status" id="ttsStatus">Pronto</div>
+        <button class="tts-stop-btn" id="ttsStopAll" title="Parar tudo">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+        </button>
+    </div>
+</div>
+
+<!-- Main lesson content -->
+<main class="aula-main" id="aulaMain">
+
+    <!-- Lesson Header -->
+    <div class="lesson-header-block">
+        <div class="lesson-meta-tags">
+            <span class="tag tag-module">Module 02</span>
+            <span class="tag tag-lesson">Lesson 08</span>
+            <span class="tag tag-level">A1</span>
+        </div>
+        <h1 class="lesson-title">Are you into K-pop?</h1>
+        <p class="lesson-subtitle">Present Continuous · Hobbies · Adjectives</p>
+        <div class="lesson-objectives">
+            <h3>By the end of this lesson, you will be able to:</h3>
+            <ul>
+                <li><span class="check">✓</span> Use the <em>Present Continuous</em> to talk about actions happening now</li>
+                <li><span class="check">✓</span> Form verbs using the <strong>-ing</strong> structure</li>
+                <li><span class="check">✓</span> Distinguish between <em>Present Continuous</em> and verbs used to talk about hobbies</li>
+                <li><span class="check">✓</span> Use vocabulary related to hobbies</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- KEYWORDS SECTION (standalone, separate from audio blocks) -->
+    <section class="lesson-section" id="section-keywords" data-section="keywords">
+        <div class="section-label">
+            <span class="section-icon">🔑</span>
+            Keywords
+        </div>
+        <h2 class="section-title-lesson">Key Vocabulary</h2>
+        <p class="section-intro">Tem cada palavra para ouvir a pronúncia em inglês.</p>
+
+        <div class="keywords-grid">
+            <div class="keyword-card" data-word="backyard" data-translation="quintal">
+                <span class="kw-word">backyard</span>
+                <span class="kw-translation">quintal</span>
+                <span class="kw-example">Lucas is painting in the backyard.</span>
+                <button class="kw-listen" aria-label="ouvir backyard">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+                </button>
+            </div>
+            <div class="keyword-card" data-word="landscape" data-translation="paisagem">
+                <span class="kw-word">landscape</span>
+                <span class="kw-translation">paisagem</span>
+                <span class="kw-example">She is painting a beautiful landscape.</span>
+                <button class="kw-listen" aria-label="ouvir landscape">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+                </button>
+            </div>
+            <div class="keyword-card" data-word="mixing" data-translation="misturando">
+                <span class="kw-word">mixing</span>
+                <span class="kw-translation">misturando</span>
+                <span class="kw-example">He is mixing blue and yellow.</span>
+                <button class="kw-listen" aria-label="ouvir mixing">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+                </button>
+            </div>
+            <div class="keyword-card" data-word="guitar" data-translation="violão / guitarra">
+                <span class="kw-word">guitar</span>
+                <span class="kw-translation">violão / guitarra</span>
+                <span class="kw-example">Emma is playing the guitar now.</span>
+                <button class="kw-listen" aria-label="ouvir guitar">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+                </button>
+            </div>
+            <div class="keyword-card" data-word="chords" data-translation="acordes">
+                <span class="kw-word">chords</span>
+                <span class="kw-translation">acordes</span>
+                <span class="kw-example">She is practicing the chords carefully.</span>
+                <button class="kw-listen" aria-label="ouvir chords">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+                </button>
+            </div>
+            <div class="keyword-card" data-word="baking" data-translation="assando">
+                <span class="kw-word">baking</span>
+                <span class="kw-translation">assando</span>
+                <span class="kw-example">I am baking a chocolate cake.</span>
+                <button class="kw-listen" aria-label="ouvir baking">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+                </button>
+            </div>
+            <div class="keyword-card" data-word="oven" data-translation="forno">
+                <span class="kw-word">oven</span>
+                <span class="kw-translation">forno</span>
+                <span class="kw-example">The oven is working perfectly.</span>
+                <button class="kw-listen" aria-label="ouvir oven">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+                </button>
+            </div>
+            <div class="keyword-card" data-word="jogging" data-translation="correndo (leve)">
+                <span class="kw-word">jogging</span>
+                <span class="kw-translation">correndo (leve)</span>
+                <span class="kw-example">They are jogging in the park.</span>
+                <button class="kw-listen" aria-label="ouvir jogging">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+                </button>
+            </div>
+            <div class="keyword-card" data-word="hiking" data-translation="fazer trilha">
+                <span class="kw-word">hiking</span>
+                <span class="kw-translation">fazer trilha</span>
+                <span class="kw-example">They enjoy hiking on weekends.</span>
+                <button class="kw-listen" aria-label="ouvir hiking">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+                </button>
+            </div>
+            <div class="keyword-card" data-word="photography" data-translation="fotografia">
+                <span class="kw-word">photography</span>
+                <span class="kw-translation">fotografia</span>
+                <span class="kw-example">I'm into photography.</span>
+                <button class="kw-listen" aria-label="ouvir photography">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+                </button>
+            </div>
+            <div class="keyword-card" data-word="programming" data-translation="programação">
+                <span class="kw-word">programming</span>
+                <span class="kw-translation">programação</span>
+                <span class="kw-example">He loves programming.</span>
+                <button class="kw-listen" aria-label="ouvir programming">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+                </button>
+            </div>
+            <div class="keyword-card" data-word="gardening" data-translation="jardinagem">
+                <span class="kw-word">gardening</span>
+                <span class="kw-translation">jardinagem</span>
+                <span class="kw-example">My mother enjoys gardening.</span>
+                <button class="kw-listen" aria-label="ouvir gardening">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPENING TEXT -->
+    <section class="lesson-section" id="section-opening" data-section="opening">
+        <div class="section-label">
+            <span class="section-icon">📖</span>
+            Opening Text
+        </div>
+        <h2 class="section-title-lesson">About Hobbies</h2>
+
+        <div class="audio-block" data-block-id="opening-1">
+            <div class="audio-block-label">Audio 01 · Opening text</div>
+            <div class="audio-block-content">
+                <p>It's Saturday afternoon, and my friends and I are having a great time!</p>
+                <p>Lucas is painting a beautiful landscape in the backyard. He loves colors, and right now, he is mixing blue and yellow to create the perfect shade of green.</p>
+                <p>Emma is playing the guitar in the living room. She is learning a new song, and she is practicing the chords carefully.</p>
+                <p>Meanwhile, I am baking a delicious chocolate cake. The oven is working, and the kitchen is smelling amazing!</p>
+                <p>Outside, in the park near our house, Jake and Olivia are jogging. They are listening to their favorite songs while exercising.</p>
+            </div>
+            <button class="btn-play-block" data-block="opening-1" aria-label="Ouvir texto">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>Ouvir</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- VOCABULARY -->
+    <section class="lesson-section" id="section-vocabulary" data-section="vocabulary">
+        <div class="section-label">
+            <span class="section-icon">📚</span>
+            Vocabulary
+        </div>
+        <h2 class="section-title-lesson">Hobbies — Atividades de Lazer</h2>
+
+        <div class="vocab-grid">
+            <div class="vocab-category">
+                <h4>📚 Common Hobbies</h4>
+                <ul class="vocab-list">
+                    <li><span class="vocab-word hoverable" data-speak="to read">to read</span> — ler</li>
+                    <li><span class="vocab-word hoverable" data-speak="to watch movies">to watch movies</span> — assistir filmes</li>
+                    <li><span class="vocab-word hoverable" data-speak="to play videogames">to play videogames</span> — jogar videogames</li>
+                    <li><span class="vocab-word hoverable" data-speak="to cook">to cook</span> — cozinhar</li>
+                    <li><span class="vocab-word hoverable" data-speak="to dance">to dance</span> — dançar</li>
+                    <li><span class="vocab-word hoverable" data-speak="to swim">to swim</span> — nadar</li>
+                    <li><span class="vocab-word hoverable" data-speak="to travel">to travel</span> — viajar</li>
+                    <li><span class="vocab-word hoverable" data-speak="to do yoga">to do yoga</span> — fazer yoga</li>
+                </ul>
+            </div>
+            <div class="vocab-category">
+                <h4>🏊 Sports & Outdoors</h4>
+                <ul class="vocab-list">
+                    <li><span class="vocab-word hoverable" data-speak="playing soccer">playing soccer</span> — jogar futebol</li>
+                    <li><span class="vocab-word hoverable" data-speak="swimming">swimming</span> — nadar</li>
+                    <li><span class="vocab-word hoverable" data-speak="jogging">jogging</span> — correr levemente</li>
+                    <li><span class="vocab-word hoverable" data-speak="hiking">hiking</span> — fazer trilha</li>
+                    <li><span class="vocab-word hoverable" data-speak="riding a bike">riding a bike</span> — andar de bicicleta</li>
+                </ul>
+            </div>
+            <div class="vocab-category">
+                <h4>🎨 Creative Hobbies</h4>
+                <ul class="vocab-list">
+                    <li><span class="vocab-word hoverable" data-speak="painting">painting</span> — pintar</li>
+                    <li><span class="vocab-word hoverable" data-speak="drawing">drawing</span> — desenhar</li>
+                    <li><span class="vocab-word hoverable" data-speak="playing the guitar">playing the guitar</span> — tocar violão</li>
+                    <li><span class="vocab-word hoverable" data-speak="writing stories">writing stories</span> — escrever histórias</li>
+                    <li><span class="vocab-word hoverable" data-speak="photography">photography</span> — fotografia</li>
+                </ul>
+            </div>
+            <div class="vocab-category">
+                <h4>🎧 Entertainment</h4>
+                <ul class="vocab-list">
+                    <li><span class="vocab-word hoverable" data-speak="watching movies">watching movies</span> — assistir filmes</li>
+                    <li><span class="vocab-word hoverable" data-speak="listening to music">listening to music</span> — ouvir música</li>
+                    <li><span class="vocab-word hoverable" data-speak="reading books">reading books</span> — ler livros</li>
+                    <li><span class="vocab-word hoverable" data-speak="playing video game">playing video game</span> — jogar videogame</li>
+                    <li><span class="vocab-word hoverable" data-speak="cooking">cooking</span> — cozinhar</li>
+                </ul>
+            </div>
+            <div class="vocab-category">
+                <h4>💻 Technology</h4>
+                <ul class="vocab-list">
+                    <li><span class="vocab-word hoverable" data-speak="learning new languages">learning new languages</span> — aprender idiomas</li>
+                    <li><span class="vocab-word hoverable" data-speak="programming">programming</span> — programação</li>
+                    <li><span class="vocab-word hoverable" data-speak="editing videos">editing videos</span> — editar vídeos</li>
+                    <li><span class="vocab-word hoverable" data-speak="playing chess">playing chess</span> — jogar xadrez</li>
+                    <li><span class="vocab-word hoverable" data-speak="studying history">studying history</span> — estudar história</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Asking about hobbies -->
+        <div class="audio-block" data-block-id="hobbies-questions">
+            <div class="audio-block-label">Audio 02 · Hobbies</div>
+            <h3 class="block-subtitle">Asking about hobbies</h3>
+            <div class="audio-block-content">
+                <div class="phrases-two-col">
+                    <div>
+                        <p class="phrase-en hoverable" data-speak="What are your hobbies?"><strong>What are your hobbies?</strong></p>
+                        <p class="phrase-pt">Quais são os seus hobbies?</p>
+                    </div>
+                    <div>
+                        <p class="phrase-en hoverable" data-speak="Do you have any hobbies?"><strong>Do you have any hobbies?</strong></p>
+                        <p class="phrase-pt">Você tem algum hobby?</p>
+                    </div>
+                    <div>
+                        <p class="phrase-en hoverable" data-speak="Are you into any activity?"><strong>Are you into (activity)?</strong></p>
+                        <p class="phrase-pt">Você curte (atividade)?</p>
+                    </div>
+                    <div>
+                        <p class="phrase-en hoverable" data-speak="What do you like to do in your free time?"><strong>What do you like to do in your free time?</strong></p>
+                        <p class="phrase-pt">O que você gosta de fazer no seu tempo livre?</p>
+                    </div>
+                </div>
+                <div class="dialogue-block">
+                    <div class="dialogue-line"><span class="speaker">Leandro:</span> Hey, Sarah, what do you like to do in your free time?</div>
+                    <div class="dialogue-line"><span class="speaker">Sarah:</span> I love reading books and I'm into photography. How about you?</div>
+                    <div class="dialogue-line"><span class="speaker">Leandro:</span> I enjoy playing the guitar. I also like hiking.</div>
+                    <div class="dialogue-line"><span class="speaker">Sarah:</span> That's nice! Do you enjoy sports?</div>
+                    <div class="dialogue-line"><span class="speaker">Leandro:</span> Not really. I'm more into art and music.</div>
+                    <div class="dialogue-line"><span class="speaker">Sarah:</span> Cool! I like music too.</div>
+                </div>
+            </div>
+            <button class="btn-play-block" data-block="hobbies-questions" aria-label="Ouvir diálogo">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>Ouvir</span>
+            </button>
+        </div>
+
+        <!-- Hobbies formula diagram -->
+        <div class="grammar-box">
+            <h3>Para falar sobre seus hobbies, use:</h3>
+            <div class="formula-row">
+                <div class="formula-verbs">
+                    <span class="fv fv-like">LIKE</span>
+                    <span class="fv fv-love">LOVE</span>
+                    <span class="fv fv-enjoy">ENJOY</span>
+                    <span class="fv fv-into">'TO BE' INTO</span>
+                </div>
+                <span class="formula-plus">+</span>
+                <div class="formula-result">VERBO NA FORMA <strong>-ING</strong></div>
+            </div>
+            <div class="formula-examples">
+                <span class="hoverable" data-speak="I like dancing">I <strong>like</strong> dancing</span>
+                <span class="hoverable" data-speak="She likes reading fantasy books">She <strong>likes</strong> reading fantasy books</span>
+                <span class="hoverable" data-speak="Are you into fishing?">Are you <strong>into</strong> fishing?</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRESENT CONTINUOUS -->
+    <section class="lesson-section" id="section-grammar" data-section="grammar">
+        <div class="section-label">
+            <span class="section-icon">📘</span>
+            Lesson Topic
+        </div>
+        <h2 class="section-title-lesson">Present Continuous</h2>
+        <p class="section-intro">O <strong>Present Continuous</strong> é usado para falar de ações que estão acontecendo <em>agora</em>, no momento da fala.</p>
+
+        <div class="audio-block" data-block-id="present-continuous">
+            <div class="audio-block-label">Audio 03 · Present Continuous</div>
+            <div class="audio-block-content">
+                <div class="examples-list">
+                    <div class="example-item hoverable" data-speak="I am reading a new fantasy book this week">📖 I'm reading a new fantasy book this week.</div>
+                    <div class="example-item hoverable" data-speak="She is painting a picture of the mountains">🎨 She's painting a picture of the mountains.</div>
+                    <div class="example-item hoverable" data-speak="We are playing basketball at the park right now">🏀 We're playing basketball at the park right now.</div>
+                    <div class="example-item hoverable" data-speak="They are watching a movie about surfing">🎬 They're watching a movie about surfing.</div>
+                    <div class="example-item hoverable" data-speak="He is learning how to play the piano">🎹 He's learning how to play the piano.</div>
+                    <div class="example-item hoverable" data-speak="I am cooking a new recipe for dinner">🍳 I'm cooking a new recipe for dinner.</div>
+                    <div class="example-item hoverable" data-speak="We are listening to our favorite band">🎶 We're listening to our favorite band.</div>
+                </div>
+            </div>
+            <button class="btn-play-block" data-block="present-continuous" aria-label="Ouvir exemplos">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>Ouvir</span>
+            </button>
+        </div>
+
+        <!-- Structure box -->
+        <div class="grammar-box">
+            <h3>Estrutura</h3>
+            <div class="structure-table">
+                <div class="str-row str-header">
+                    <span>Sujeito</span>
+                    <span>Verbo to be</span>
+                    <span>Verbo + -ing</span>
+                    <span>Complemento</span>
+                </div>
+                <div class="str-row hoverable" data-speak="I am reading a book">
+                    <span>I</span><span>am</span><span>reading</span><span>a book</span>
+                </div>
+                <div class="str-row hoverable" data-speak="She is painting a picture">
+                    <span>She</span><span>is</span><span>painting</span><span>a picture</span>
+                </div>
+                <div class="str-row hoverable" data-speak="They are riding their bikes in the park">
+                    <span>They</span><span>are</span><span>riding</span><span>their bikes in the park</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- -ing rules -->
+        <h3 class="subsection-title">Conjugando verbos no Present Continuous</h3>
+        <div class="rules-grid">
+            <div class="rule-card">
+                <div class="rule-tag">Regra Geral</div>
+                <p>Adiciona <strong>-ing</strong> diretamente.</p>
+                <div class="rule-examples">
+                    <span class="hoverable" data-speak="playing">play → <strong>playing</strong></span>
+                    <span class="hoverable" data-speak="reading">read → <strong>reading</strong></span>
+                    <span class="hoverable" data-speak="watching">watch → <strong>watching</strong></span>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-tag">Termina em "e"</div>
+                <p>Tira o <strong>e</strong>, adiciona <strong>-ing</strong>.</p>
+                <div class="rule-examples">
+                    <span class="hoverable" data-speak="making">make → <strong>making</strong></span>
+                    <span class="hoverable" data-speak="writing">write → <strong>writing</strong></span>
+                    <span class="hoverable" data-speak="taking">take → <strong>taking</strong></span>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-tag">C-V-C</div>
+                <p>Dobra a última consoante + <strong>-ing</strong>.</p>
+                <div class="rule-examples">
+                    <span class="hoverable" data-speak="running">run → <strong>running</strong></span>
+                    <span class="hoverable" data-speak="sitting">sit → <strong>sitting</strong></span>
+                    <span class="hoverable" data-speak="swimming">swim → <strong>swimming</strong></span>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-tag">Termina em "ie"</div>
+                <p>Troca <strong>ie</strong> por <strong>y</strong> + <strong>-ing</strong>.</p>
+                <div class="rule-examples">
+                    <span class="hoverable" data-speak="dying">die → <strong>dying</strong></span>
+                    <span class="hoverable" data-speak="lying down">lie down → <strong>lying down</strong></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRAMMAR: PC x Hobbies + Adjectives -->
+    <section class="lesson-section" id="section-grammar2" data-section="grammar2">
+        <div class="section-label">
+            <span class="section-icon">📕</span>
+            Grammar
+        </div>
+
+        <h2 class="section-title-lesson">Part 1: Present Continuous × Hobbies</h2>
+
+        <div class="audio-block" data-block-id="grammar-part1">
+            <div class="audio-block-label">Audio 04 · Grammar Part 1</div>
+            <div class="audio-block-content">
+                <div class="comparison-grid">
+                    <div class="comp-col">
+                        <div class="comp-header">What are they doing?</div>
+                        <div class="comp-formula">to be + -ing = Present Continuous</div>
+                        <p class="hoverable" data-speak="Dave is listening to music.">Dave <strong>is listening</strong> to music.</p>
+                        <p class="hoverable" data-speak="Carol is writing.">Carol <strong>is writing</strong>.</p>
+                        <p class="hoverable" data-speak="Thales is doing yoga.">Thales <strong>is doing</strong> yoga.</p>
+                    </div>
+                    <div class="comp-divider"></div>
+                    <div class="comp-col">
+                        <div class="comp-header">What are their hobbies?</div>
+                        <div class="comp-formula">Like / Love / Enjoy / To be into + -ing = Hobbies</div>
+                        <p class="hoverable" data-speak="Dave likes listening to music.">Dave <strong>likes</strong> listening to music.</p>
+                        <p class="hoverable" data-speak="Carol loves writing.">Carol <strong>loves</strong> writing.</p>
+                        <p class="hoverable" data-speak="Thales is into doing yoga.">Thales <strong>is into</strong> doing yoga.</p>
+                    </div>
+                </div>
+                <div class="audio-passage hoverable" data-speak="These are my friends, Dave, Carol, and Thales. Dave is listening to his favorite song. He is into K-pop and dancing. Carol loves writing fantasy stories. She is writing a story about a dragon. Thales, on the other hand, is sitting on the ground. He enjoys doing yoga. I, myself, like playing chess and board games. It's pretty fun!">
+                    <p>These are my friends, Dave, Carol, and Thales. Dave is listening to his favorite song. He is into K-pop and dancing. Carol loves writing fantasy stories. She is writing a story about a dragon. Thales, on the other hand, is sitting on the ground. He enjoys doing yoga. I, myself, like playing chess and board games. It's pretty fun!</p>
+                </div>
+            </div>
+            <button class="btn-play-block" data-block="grammar-part1" aria-label="Ouvir áudio">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>Ouvir</span>
+            </button>
+        </div>
+
+        <h2 class="section-title-lesson" style="margin-top:2.5rem">Part 2: Adjectives</h2>
+        <p class="section-intro">Os adjetivos descrevem pessoas, lugares ou coisas. Em inglês, eles vêm <strong>antes do substantivo</strong> ou <strong>depois do verbo to be</strong>.</p>
+
+        <div class="adjectives-grid">
+            <div class="adj-card hoverable" data-speak="happy"><span class="adj-en">happy</span><span class="adj-pt">feliz</span></div>
+            <div class="adj-card hoverable" data-speak="sad"><span class="adj-en">sad</span><span class="adj-pt">triste</span></div>
+            <div class="adj-card hoverable" data-speak="tall"><span class="adj-en">tall</span><span class="adj-pt">alto/a</span></div>
+            <div class="adj-card hoverable" data-speak="tired"><span class="adj-en">tired</span><span class="adj-pt">cansado/a</span></div>
+            <div class="adj-card hoverable" data-speak="hungry"><span class="adj-en">hungry</span><span class="adj-pt">com fome</span></div>
+            <div class="adj-card hoverable" data-speak="short"><span class="adj-en">short</span><span class="adj-pt">baixo/a</span></div>
+            <div class="adj-card hoverable" data-speak="fast"><span class="adj-en">fast</span><span class="adj-pt">rápido/a</span></div>
+            <div class="adj-card hoverable" data-speak="handsome"><span class="adj-en">handsome</span><span class="adj-pt">bonito (masc.)</span></div>
+            <div class="adj-card hoverable" data-speak="beautiful"><span class="adj-en">beautiful</span><span class="adj-pt">bonita (fem.)</span></div>
+        </div>
+
+        <!-- Comparative & Superlative -->
+        <h3 class="subsection-title" style="margin-top:2rem">Comparative Adjectives</h3>
+        <div class="rules-grid">
+            <div class="rule-card">
+                <div class="rule-tag">Curtos (não CVC)</div>
+                <p>Adjective + <strong>-er</strong> + than</p>
+                <div class="rule-examples">
+                    <span class="hoverable" data-speak="My brother is taller than me">tall → <strong>taller</strong> than</span>
+                    <span class="hoverable" data-speak="A cheetah is faster than a lion">fast → <strong>faster</strong> than</span>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-tag">Curtos CVC</div>
+                <p>Dobra consoante + <strong>-er</strong> + than</p>
+                <div class="rule-examples">
+                    <span class="hoverable" data-speak="São Paulo is bigger than Jacareí">big → <strong>bigger</strong> than</span>
+                    <span class="hoverable" data-speak="Cuiabá is hotter than Florianópolis">hot → <strong>hotter</strong> than</span>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-tag">Termina em -y</div>
+                <p>Troca <strong>y</strong> por <strong>ier</strong> + than</p>
+                <div class="rule-examples">
+                    <span class="hoverable" data-speak="Jackie Chan is funnier than Adam Sandler">funny → <strong>funnier</strong> than</span>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-tag">Longos (2+ sílabas)</div>
+                <p><strong>more</strong> + adjective + than</p>
+                <div class="rule-examples">
+                    <span class="hoverable" data-speak="A Ferrari is more expensive than a Fiat Uno">expensive → <strong>more expensive</strong> than</span>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="subsection-title" style="margin-top:1.5rem">Superlative Adjectives</h3>
+        <div class="rules-grid">
+            <div class="rule-card">
+                <div class="rule-tag">Curtos</div>
+                <p>the + adjective + <strong>-est</strong></p>
+                <div class="rule-examples">
+                    <span class="hoverable" data-speak="the fastest">fast → <strong>the fastest</strong></span>
+                    <span class="hoverable" data-speak="the tallest">tall → <strong>the tallest</strong></span>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-tag">Longos</div>
+                <p>the <strong>most</strong> + adjective</p>
+                <div class="rule-examples">
+                    <span class="hoverable" data-speak="the most beautiful">beautiful → <strong>the most beautiful</strong></span>
+                </div>
+            </div>
+            <div class="rule-card">
+                <div class="rule-tag">Irregulares</div>
+                <div class="rule-examples">
+                    <span class="hoverable" data-speak="the best">good → <strong>the best</strong></span>
+                    <span class="hoverable" data-speak="the worst">bad → <strong>the worst</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="audio-block" data-block-id="grammar-part2" style="margin-top:1.5rem">
+            <div class="audio-block-label">Audio 05 · Grammar Part 2</div>
+            <div class="audio-block-content">
+                <div class="examples-list">
+                    <div class="example-item hoverable" data-speak="Brazil is bigger than Argentina.">Brazil is bigger than Argentina.</div>
+                    <div class="example-item hoverable" data-speak="Mount Everest is the highest mountain in the world.">Mount Everest is the highest mountain in the world.</div>
+                    <div class="example-item hoverable" data-speak="Burj Khalifa is the tallest building in the world.">Burj Khalifa is the tallest building in the world.</div>
+                    <div class="example-item hoverable" data-speak="Messi is younger than Cristiano Ronaldo.">Messi is younger than Cristiano Ronaldo.</div>
+                    <div class="example-item hoverable" data-speak="The cheetah is the fastest animal on land.">The cheetah is the fastest animal on land.</div>
+                </div>
+            </div>
+            <button class="btn-play-block" data-block="grammar-part2" aria-label="Ouvir exemplos">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>Ouvir</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- PRONUNCIATION -->
+    <section class="lesson-section" id="section-pronunciation" data-section="pronunciation">
+        <div class="section-label">
+            <span class="section-icon">🗣️</span>
+            Pronunciation
+        </div>
+        <h2 class="section-title-lesson">The "-g" in Present Continuous</h2>
+        <p class="section-intro">Na fala, o <strong>-g</strong> final da forma <strong>-ing</strong> muitas vezes não é pronunciado. Isso é natural e casual — mas na <em>escrita</em>, sempre escreva completo.</p>
+
+        <div class="audio-block" data-block-id="pronunciation">
+            <div class="audio-block-label">Audio 06 · Pronunciation</div>
+            <div class="audio-block-content">
+                <div class="pronunciation-list">
+                    <div class="pron-item">
+                        <span class="pron-formal hoverable" data-speak="I am studying English">I am studying English</span>
+                        <span class="pron-arrow">→</span>
+                        <span class="pron-casual">"I am studyin' English"</span>
+                        <span class="pron-pt">Eu estou estudando inglês</span>
+                    </div>
+                    <div class="pron-item">
+                        <span class="pron-formal hoverable" data-speak="You are watching TV">You are watching TV</span>
+                        <span class="pron-arrow">→</span>
+                        <span class="pron-casual">"You are watchin' TV"</span>
+                        <span class="pron-pt">Você está assistindo TV</span>
+                    </div>
+                    <div class="pron-item">
+                        <span class="pron-formal hoverable" data-speak="He is playing soccer">He is playing soccer</span>
+                        <span class="pron-arrow">→</span>
+                        <span class="pron-casual">"He is playin' soccer"</span>
+                        <span class="pron-pt">Ele está jogando futebol</span>
+                    </div>
+                    <div class="pron-item">
+                        <span class="pron-formal hoverable" data-speak="They are traveling to Spain">They are traveling to Spain</span>
+                        <span class="pron-arrow">→</span>
+                        <span class="pron-casual">"They are travelin' to Spain"</span>
+                        <span class="pron-pt">Eles estão viajando para a Espanha</span>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-play-block" data-block="pronunciation" aria-label="Ouvir pronúncia">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>Ouvir</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- DIALOGUE -->
+    <section class="lesson-section" id="section-dialogue" data-section="dialogue">
+        <div class="section-label">
+            <span class="section-icon">💬</span>
+            Dialogue
+        </div>
+        <h2 class="section-title-lesson">Talking about Hobbies</h2>
+
+        <div class="audio-block" data-block-id="dialogue-main">
+            <div class="audio-block-label">Audio 07 · Dialogue</div>
+            <div class="audio-block-content">
+                <div class="dialogue-block dialogue-styled">
+                    <div class="dialogue-line dl-lucas"><span class="speaker sp-lucas">Lucas</span> Hey, Carol! What do you like to do in your free time?</div>
+                    <div class="dialogue-line dl-carol"><span class="speaker sp-carol">Carol</span> Well… I love writing fantasy stories. It's so much fun!</div>
+                    <div class="dialogue-line dl-lucas"><span class="speaker sp-lucas">Lucas</span> That's cool! I enjoy playing chess and board games.</div>
+                    <div class="dialogue-line dl-carol"><span class="speaker sp-carol">Carol</span> Oh, really? I like board games too! Especially strategy ones.</div>
+                    <div class="dialogue-line dl-lucas"><span class="speaker sp-lucas">Lucas</span> Nice! Are you into any other hobbies?</div>
+                    <div class="dialogue-line dl-carol"><span class="speaker sp-carol">Carol</span> Yes, I am into painting a little bit. How about you?</div>
+                    <div class="dialogue-line dl-lucas"><span class="speaker sp-lucas">Lucas</span> I love listening to K-pop music and dancing. Let's shake, baby!</div>
+                    <div class="dialogue-line dl-sofia"><span class="speaker sp-sofia">Sofia</span> (laughing) Did someone say dancing? Count me in! I like salsa and bachata.</div>
+                    <div class="dialogue-line dl-lucas"><span class="speaker sp-lucas">Lucas</span> Wow, Sofia! You dance salsa? That's awesome!</div>
+                    <div class="dialogue-line dl-sofia"><span class="speaker sp-sofia">Sofia</span> Yes! And my brother plays the guitar, so sometimes we make a little music at home.</div>
+                    <div class="dialogue-line dl-carol"><span class="speaker sp-carol">Carol</span> That sounds fun! What about your mom, Sofia? What are her hobbies?</div>
+                    <div class="dialogue-line dl-sofia"><span class="speaker sp-sofia">Sofia</span> My mom loves gardening. She spends hours with her plants.</div>
+                    <div class="dialogue-line dl-lucas"><span class="speaker sp-lucas">Lucas</span> That's nice. My little brother is into video games. He can play for hours without moving!</div>
+                    <div class="dialogue-line dl-carol"><span class="speaker sp-carol">Carol</span> Sounds familiar! My dad enjoys cooking, especially Italian food.</div>
+                    <div class="dialogue-line dl-sofia"><span class="speaker sp-sofia">Sofia</span> Oh, yum! Can he cook pizza?</div>
+                    <div class="dialogue-line dl-carol"><span class="speaker sp-carol">Carol</span> The best pizza ever!</div>
+                    <div class="dialogue-line dl-lucas"><span class="speaker sp-lucas">Lucas</span> Great! We should all meet one day — pizza, board games, and dancing!</div>
+                    <div class="dialogue-line dl-sofia"><span class="speaker sp-sofia">Sofia</span> And maybe a little K-pop to finish the night!</div>
+                </div>
+            </div>
+            <button class="btn-play-block" data-block="dialogue-main" aria-label="Ouvir diálogo">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>Ouvir</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="lesson-section" id="section-summary" data-section="summary">
+        <div class="section-label">
+            <span class="section-icon">✍️</span>
+            Summary
+        </div>
+        <h2 class="section-title-lesson">In this lesson we covered…</h2>
+        <div class="summary-grid">
+            <div class="summary-item">
+                <div class="summary-icon">🗣️</div>
+                <h4>Hobbies</h4>
+                <p>How to ask and answer about free-time activities using <em>like, love, enjoy</em> and <em>to be into</em> + -ing.</p>
+            </div>
+            <div class="summary-item">
+                <div class="summary-icon">⏱️</div>
+                <h4>Present Continuous</h4>
+                <p>Actions happening right now: <em>to be</em> (present) + verb + -ing. Spelling rules included.</p>
+            </div>
+            <div class="summary-item">
+                <div class="summary-icon">🔍</div>
+                <h4>PC × Hobbies</h4>
+                <p><em>"I am painting"</em> (now) vs. <em>"I like painting"</em> (hobby). Different structures, different meanings.</p>
+            </div>
+            <div class="summary-item">
+                <div class="summary-icon">📝</div>
+                <h4>Adjectives</h4>
+                <p>Descriptive adjectives, comparatives (-er / more) and superlatives (-est / most / the best / the worst).</p>
+            </div>
+            <div class="summary-item">
+                <div class="summary-icon">🎤</div>
+                <h4>Pronunciation</h4>
+                <p>The dropped -g in -ing: "readin'", "watchin'", "playin'" — natural in speech, always written in full.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXERCISES -->
+    <section class="lesson-section" id="section-exercises" data-section="exercises">
+        <div class="section-label">
+            <span class="section-icon">📝</span>
+            Exercises
+        </div>
+        <h2 class="section-title-lesson">Practice Time</h2>
+
+        <!-- Exercise 1 -->
+        <div class="exercise-block" id="ex1">
+            <h3 class="ex-title">1 — Complete with the correct comparative or superlative</h3>
+            <div class="ex-items">
+                <div class="ex-item">
+                    <span class="ex-letter">a)</span>
+                    <span>Uruguay is not</span>
+                    <input class="ex-input" type="text" placeholder="big" data-answer="the biggest">
+                    <span>country in South America.</span>
+                </div>
+                <div class="ex-item">
+                    <span class="ex-letter">b)</span>
+                    <span>New York is</span>
+                    <input class="ex-input" type="text" placeholder="expensive" data-answer="more expensive">
+                    <span>than Mexico City.</span>
+                </div>
+                <div class="ex-item">
+                    <span class="ex-letter">c)</span>
+                    <span>Cristiano Ronaldo is not</span>
+                    <input class="ex-input" type="text" placeholder="young" data-answer="the youngest">
+                    <span>player on his team.</span>
+                </div>
+                <div class="ex-item">
+                    <span class="ex-letter">d)</span>
+                    <span>Shaquille O'Neal is</span>
+                    <input class="ex-input" type="text" placeholder="tall" data-answer="taller">
+                    <span>than most basketball players.</span>
+                </div>
+                <div class="ex-item">
+                    <span class="ex-letter">e)</span>
+                    <span>Elephants are</span>
+                    <input class="ex-input" type="text" placeholder="big" data-answer="bigger">
+                    <span>than lions.</span>
+                </div>
+            </div>
+            <button class="btn-check-ex" data-exercise="ex1">Verificar respostas</button>
+        </div>
+
+        <!-- Exercise 2 -->
+        <div class="exercise-block" id="ex2">
+            <h3 class="ex-title">2 — Complete with: like / love / enjoy / be into</h3>
+            <div class="ex-dialogue">
+                <div class="ex-item ex-dialogue-line">
+                    <span class="speaker">Anna:</span>
+                    <span>Hey, Thales! What do you</span>
+                    <input class="ex-input" type="text" placeholder="___" data-answer="like">
+                    <span>to do in your free time?</span>
+                </div>
+                <div class="ex-item ex-dialogue-line">
+                    <span class="speaker">Thales:</span>
+                    <span>Hi, Anna! I</span>
+                    <input class="ex-input" type="text" placeholder="___" data-answer="enjoy">
+                    <span>doing yoga. It helps me relax.</span>
+                </div>
+                <div class="ex-item ex-dialogue-line">
+                    <span class="speaker">Anna:</span>
+                    <span>That's awesome! I</span>
+                    <input class="ex-input" type="text" placeholder="___" data-answer="love">
+                    <span>playing the guitar in my spare time.</span>
+                </div>
+                <div class="ex-item ex-dialogue-line">
+                    <span class="speaker">Thales:</span>
+                    <span>Oh, cool! Are you</span>
+                    <input class="ex-input" type="text" placeholder="___" data-answer="into">
+                    <span>any other hobbies?</span>
+                </div>
+                <div class="ex-item ex-dialogue-line">
+                    <span class="speaker">Anna:</span>
+                    <span>Yes, I</span>
+                    <input class="ex-input" type="text" placeholder="___" data-answer="like">
+                    <span>hiking on weekends.</span>
+                </div>
+                <div class="ex-item ex-dialogue-line">
+                    <span class="speaker">Thales:</span>
+                    <span>I also</span>
+                    <input class="ex-input" type="text" placeholder="___" data-answer="enjoy">
+                    <span>reading fantasy books. They're amazing!</span>
+                </div>
+            </div>
+            <button class="btn-check-ex" data-exercise="ex2">Verificar respostas</button>
+        </div>
+
+        <!-- Exercise 3 -->
+        <div class="exercise-block" id="ex3">
+            <h3 class="ex-title">3 — Unscramble the words to form correct sentences</h3>
+            <div class="ex-items">
+                <div class="ex-item ex-unscramble">
+                    <span class="ex-letter">a)</span>
+                    <div class="ex-scrambled">playing — is — the boy — videogame</div>
+                    <input class="ex-input ex-input-wide" type="text" placeholder="Escreva a frase" data-answer="the boy is playing videogame">
+                </div>
+                <div class="ex-item ex-unscramble">
+                    <span class="ex-letter">b)</span>
+                    <div class="ex-scrambled">reading a book — the girl — on the sofa — is</div>
+                    <input class="ex-input ex-input-wide" type="text" placeholder="Escreva a frase" data-answer="the girl is reading a book on the sofa">
+                </div>
+                <div class="ex-item ex-unscramble">
+                    <span class="ex-letter">c)</span>
+                    <div class="ex-scrambled">a party — they — having — are</div>
+                    <input class="ex-input ex-input-wide" type="text" placeholder="Escreva a frase" data-answer="they are having a party">
+                </div>
+                <div class="ex-item ex-unscramble">
+                    <span class="ex-letter">d)</span>
+                    <div class="ex-scrambled">they all — laughing — are</div>
+                    <input class="ex-input ex-input-wide" type="text" placeholder="Escreva a frase" data-answer="they all are laughing">
+                </div>
+            </div>
+            <button class="btn-check-ex" data-exercise="ex3">Verificar respostas</button>
+        </div>
+    </section>
+
+    <!-- Lesson end -->
+    <div class="lesson-end-block">
+        <div class="lesson-end-icon">🎉</div>
+        <h2>That's it for today!</h2>
+        <p>A gente se vê na próxima lição. Keep practicing!</p>
+        <div class="lesson-end-actions">
+            <button class="btn-primary btn-large" id="btnMarkComplete">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+                Marcar como concluída
+            </button>
+            <a href="area-aluno.html" class="btn-secondary btn-large">Voltar para o Dashboard</a>
+        </div>
+    </div>
+
+</main>
+
+<!-- Fixed Footer -->
+<div class="lesson-footer" id="lessonFooter">
+    <div class="footer-progress-bar">
+        <div class="footer-progress-fill" id="footerProgressFill"></div>
+    </div>
+    <div class="footer-inner">
+        <div class="footer-left">
+            <span class="footer-lesson-name">Module 02 · Lesson 08</span>
+            <span class="footer-progress-label" id="footerProgressLabel">0% concluído</span>
+        </div>
+        <div class="footer-center">
+            <button class="footer-btn" id="footerPlayPause" title="Play / Pause TTS">
+                <svg id="footerPlayIcon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <svg id="footerPauseIcon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </button>
+            <div class="footer-tts-mini">
+                <label>Rate</label>
+                <input type="range" id="footerRate" min="0.5" max="2" step="0.1" value="1">
+                <span id="footerRateVal">1.0x</span>
+            </div>
+        </div>
+        <div class="footer-right">
+            <button class="footer-btn-complete" id="footerMarkComplete">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+                Concluir lição
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- WP: substituir por wp_footer() -->
+<script src="aula.js"></script>
+</body>
+</html>
