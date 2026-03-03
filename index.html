@@ -10,110 +10,179 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* Essential styles to prevent blank or broken layout */
-        .tts-panel { display: none; position: absolute; background: white; border: 1px solid #ddd; padding: 15px; z-index: 1000; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); top: 100%; left: 0; }
+        /* Custom UI fixes for the Dashboard and Hover effects */
+        .tts-panel { 
+            display: none; 
+            position: absolute; 
+            background: white; 
+            border: 1px solid #e2e8f0; 
+            padding: 20px; 
+            z-index: 9999; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            top: 45px;
+            left: 0;
+            min-width: 220px;
+        }
         .tts-panel.active { display: block; }
-        .hoverable { cursor: pointer; transition: background 0.2s; padding: 2px 4px; border-radius: 4px; }
-        .hoverable:hover { background-color: rgba(0, 123, 255, 0.1); color: #007bff; }
-        .tts-controls-inner { position: relative; display: flex; align-items: center; gap: 10px; }
-        .speaker { font-weight: bold; color: #333; margin-right: 5px; }
+        .tts-controls-inner { position: relative; display: flex; align-items: center; gap: 15px; }
+        .hoverable { cursor: pointer; border-radius: 4px; transition: all 0.2s; position: relative; }
+        .hoverable:hover { background-color: rgba(59, 130, 246, 0.1); color: #2563eb; }
+        .speaker { font-weight: 800; color: #1e293b; margin-right: 4px; }
+        .dialogue-line { padding: 10px; border-radius: 8px; margin-bottom: 5px; border: 1px solid transparent; }
+        .dialogue-line:hover { border-color: #cbd5e1; }
     </style>
 </head>
 <body class="aula-body">
 
 <header class="header header-aula">
     <nav class="nav-container">
-        <a href="area-aluno.html" class="logo" style="text-decoration:none">Mr. <strong>Dave</strong> Idiomas</a>
+        <a href="area-aluno.html" class="logo" style="text-decoration:none">
+            Mr. <strong>Dave</strong> Idiomas
+        </a>
         <div class="aula-breadcrumb">
-            <a href="area-aluno.html">Área do Aluno</a> / <a href="#">USpeaK</a> / <span>Module 02 · Lesson 08</span>
+            <a href="area-aluno.html">Área do Aluno</a> <span>/</span> <a href="#">USpeaK</a> <span>/</span> <span>Module 02 · Lesson 08</span>
+        </div>
+        <div class="aula-nav-actions">
+            <button class="btn-nav-aula" id="btnPrevLesson"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg></button>
+            <span class="aula-nav-label">Lição 08 / 12</span>
+            <button class="btn-nav-aula" id="btnNextLesson"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg></button>
         </div>
     </nav>
 </header>
 
 <div class="tts-controls-bar" id="ttsControlsBar">
     <div class="tts-controls-inner">
-        <button class="tts-toggle-panel" id="ttsTogglePanel">⚙️ Configurações</button>
+        <button class="tts-toggle-panel" id="ttsTogglePanel">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+            Configurações
+        </button>
         <div class="tts-panel" id="ttsPanel">
             <div class="tts-control-group">
                 <label>Idioma</label>
-                <select id="ttsLang"><option value="en-US">🇺🇸 EN / US</option><option value="en-GB">🇬🇧 EN / UK</option></select>
+                <select id="ttsLang">
+                    <option value="en-US">🇺🇸 EN / US</option>
+                    <option value="en-GB">🇬🇧 EN / UK</option>
+                </select>
             </div>
             <div class="tts-control-group">
                 <label>Velocidade <span id="rateVal">1.0</span>x</label>
                 <input type="range" id="ttsRate" min="0.5" max="2" step="0.1" value="1">
             </div>
+            <div class="tts-control-group">
+                <label>Tom <span id="pitchVal">1.0</span></label>
+                <input type="range" id="ttsPitch" min="0.5" max="2" step="0.1" value="1">
+            </div>
         </div>
         <div class="tts-status" id="ttsStatus">Pronto</div>
-        <button id="ttsStopAll">⏹️ Parar</button>
+        <button class="tts-stop-btn" id="ttsStopAll"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></button>
     </div>
 </div>
 
 <main class="aula-main">
-    <section class="lesson-section">
+    <div class="lesson-header-block">
+        <div class="lesson-meta-tags">
+            <span class="tag tag-module">Module 02</span>
+            <span class="tag tag-lesson">Lesson 08</span>
+        </div>
         <h1 class="lesson-title">Are you into K-pop?</h1>
+        <p class="lesson-subtitle">Present Continuous · Hobbies · Adjectives</p>
+    </div>
+
+    <section class="lesson-section">
+        <div class="section-label">🔑 Keywords</div>
         <div class="keywords-grid">
-            <div class="keyword-card hoverable" data-speak="backyard"><strong>backyard</strong> (quintal)</div>
-            <div class="keyword-card hoverable" data-speak="landscape"><strong>landscape</strong> (paisagem)</div>
+            <div class="keyword-card hoverable" data-speak="backyard"><span class="kw-word">backyard</span> <span class="kw-translation">quintal</span></div>
+            <div class="keyword-card hoverable" data-speak="landscape"><span class="kw-word">landscape</span> <span class="kw-translation">paisagem</span></div>
+            <div class="keyword-card hoverable" data-speak="mixing"><span class="kw-word">mixing</span> <span class="kw-translation">misturando</span></div>
+            <div class="keyword-card hoverable" data-speak="guitar"><span class="kw-word">guitar</span> <span class="kw-translation">violão</span></div>
         </div>
     </section>
 
     <section class="lesson-section">
-        <h2>Dialogue</h2>
-        <div class="dialogue-block">
-            <div class="dialogue-line hoverable" data-gender="male" data-speak="Hey, Sarah, what do you like to do in your free time?"><span class="speaker">Leandro:</span> Hey, Sarah, what do you like to do in your free time?</div>
-            <div class="dialogue-line hoverable" data-gender="female" data-speak="I love reading books and I'm into photography."><span class="speaker">Sarah:</span> I love reading books and I'm into photography.</div>
+        <div class="section-label">💬 Dialogue</div>
+        <div class="audio-block">
+            <div class="dialogue-block">
+                <div class="dialogue-line hoverable" data-gender="male" data-speak="Hey Sarah, what do you like to do in your free time?"><span class="speaker">Leandro:</span> Hey, Sarah, what do you like to do in your free time?</div>
+                <div class="dialogue-line hoverable" data-gender="female" data-speak="I love reading books and I am into photography. How about you?"><span class="speaker">Sarah:</span> I love reading books and I'm into photography. How about you?</div>
+                <div class="dialogue-line hoverable" data-gender="male" data-speak="I enjoy playing the guitar. I also like hiking."><span class="speaker">Leandro:</span> I enjoy playing the guitar. I also like hiking.</div>
+                <div class="dialogue-line hoverable" data-gender="female" data-speak="That is nice! Do you enjoy sports?"><span class="speaker">Sarah:</span> That's nice! Do you enjoy sports?</div>
+            </div>
         </div>
     </section>
 
     <section class="lesson-section">
-        <h2>Adjectives</h2>
+        <div class="section-label">📕 Adjectives</div>
         <div class="adjectives-grid">
-            <div class="adj-card hoverable" data-speak="happy">happy (feliz)</div>
-            <div class="adj-card hoverable" data-speak="sad">sad (triste)</div>
-            <div class="adj-card hoverable" data-speak="tired">tired (cansado)</div>
-            <div class="adj-card hoverable" data-speak="hungry">hungry (faminto)</div>
+            <div class="adj-card hoverable" data-speak="happy"><span class="adj-en">happy</span> <span class="adj-pt">feliz</span></div>
+            <div class="adj-card hoverable" data-speak="sad"><span class="adj-en">sad</span> <span class="adj-pt">triste</span></div>
+            <div class="adj-card hoverable" data-speak="tired"><span class="adj-en">tired</span> <span class="adj-pt">cansado/a</span></div>
+            <div class="adj-card hoverable" data-speak="hungry"><span class="adj-en">hungry</span> <span class="adj-pt">com fome</span></div>
+            <div class="adj-card hoverable" data-speak="excited"><span class="adj-en">excited</span> <span class="adj-pt">empolgado/a</span></div>
+            <div class="adj-card hoverable" data-speak="bored"><span class="adj-en">bored</span> <span class="adj-pt">entediado/a</span></div>
         </div>
     </section>
 </main>
 
 <script>
-    // TTS Logic
     const synth = window.speechSynthesis;
-    
-    function speak(text, gender) {
-        synth.cancel();
-        const utter = new SpeechSynthesisUtterance(text);
-        const voices = synth.getVoices();
-        
-        // Find English voices
-        const enVoices = voices.filter(v => v.lang.includes('en'));
-        
-        if (gender === 'male') {
-            utter.voice = enVoices.find(v => v.name.toLowerCase().includes('male') || v.name.includes('David') || v.name.includes('James')) || enVoices[0];
-        } else if (gender === 'female') {
-            utter.voice = enVoices.find(v => v.name.toLowerCase().includes('female') || v.name.includes('Zira') || v.name.includes('Samantha')) || enVoices[0];
-        }
+    const MALE_NAMES = ['David', 'Mark', 'Daniel', 'Google US English Male', 'Microsoft James'];
+    const FEMALE_NAMES = ['Zira', 'Samantha', 'Google US English Female', 'Microsoft Zira', 'Salli'];
 
-        utter.rate = document.getElementById('ttsRate').value;
-        synth.speak(utter);
+    function getVoice(gender) {
+        const voices = synth.getVoices();
+        const pool = gender === 'male' ? MALE_NAMES : FEMALE_NAMES;
+        const selected = voices.find(v => pool.some(name => v.name.includes(name)) && v.lang.startsWith('en'));
+        return selected || voices.find(v => v.lang.startsWith('en'));
     }
 
-    // Event Listeners
-    document.addEventListener('click', (e) => {
-        const target = e.target.closest('.hoverable');
-        if (target) {
-            const text = target.getAttribute('data-speak');
-            const gender = target.getAttribute('data-gender');
-            speak(text, gender);
+    function speak(text, gender = null) {
+        synth.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = document.getElementById('ttsRate').value;
+        utterance.pitch = document.getElementById('ttsPitch').value;
+        
+        if (gender) {
+            utterance.voice = getVoice(gender);
+        } else {
+            utterance.lang = document.getElementById('ttsLang').value;
         }
+
+        const status = document.getElementById('ttsStatus');
+        utterance.onstart = () => { status.innerText = "Falando..."; status.style.color = "#ef4444"; };
+        utterance.onend = () => { status.innerText = "Pronto"; status.style.color = "#64748b"; };
+
+        synth.speak(utterance);
+    }
+
+    // Toggle Settings Panel
+    document.getElementById('ttsTogglePanel').addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.getElementById('ttsPanel').classList.toggle('active');
     });
 
-    document.getElementById('ttsTogglePanel').onclick = () => document.getElementById('ttsPanel').classList.toggle('active');
+    // Close panel when clicking outside
+    document.addEventListener('click', () => document.getElementById('ttsPanel').classList.remove('active'));
+    document.getElementById('ttsPanel').addEventListener('click', (e) => e.stopPropagation());
+
+    // Click to Speak Logic
+    document.addEventListener('click', (e) => {
+        const item = e.target.closest('.hoverable');
+        if (!item) return;
+        const text = item.getAttribute('data-speak') || item.innerText;
+        const gender = item.getAttribute('data-gender');
+        speak(text, gender);
+    });
+
     document.getElementById('ttsStopAll').onclick = () => synth.cancel();
     document.getElementById('ttsRate').oninput = (e) => document.getElementById('rateVal').innerText = e.target.value;
+    document.getElementById('ttsPitch').oninput = (e) => document.getElementById('pitchVal').innerText = e.target.value;
 
-    // Load voices
+    // Load voices correctly
     synth.getVoices();
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = synth.getVoices;
+    }
 </script>
 </body>
 </html>
